@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ti:app xmlns:ti="http://ti.appcelerator.org">
+    <id>com.nokunda.one</id>
+    <name>NokundaOne</name>
+    <version>1.0</version>
+    <publisher>NoKunda</publisher>
+    <url>http://www.nokunda.com</url>
+    <description>Combating power theft</description>
+    <copyright>2014 by NoKunda</copyright>
+    <icon>appicon.png</icon>
+    <fullscreen>false</fullscreen>
+    <navbar-hidden>true</navbar-hidden>
+    <analytics>false</analytics>
+    <guid>12fcc53c-da61-408b-8425-086f6c42be8f</guid>
+    <property name="ti.ui.defaultunit" type="string">dp</property>
+    <ios>
+        <property name="ti.facebook.appid">516713608430736</property>
+        <plist>
+            <dict>
+                <key>UISupportedInterfaceOrientations~iphone</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                </array>
+                <key>UISupportedInterfaceOrientations~ipad</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                    <string>UIInterfaceOrientationPortraitUpsideDown</string>
+                    <string>UIInterfaceOrientationLandscapeLeft</string>
+                    <string>UIInterfaceOrientationLandscapeRight</string>
+                </array>
+                <key>UIRequiresPersistentWiFi</key>
+                <false/>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+                <key>UIStatusBarHidden</key>
+                <false/>
+                <key>UIStatusBarStyle</key>
+                <string>UIStatusBarStyleDefault</string>
+            </dict>
+        </plist>
+    </ios>
+    <android xmlns:android="http://schemas.android.com/apk/res/android">
+        <manifest>
+            <uses-permission android:name="android.permission.INTERNET"/>
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+            <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+            <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
+            <uses-permission android:name="com.nokunda.one.permission.MAPS_RECEIVE"/>
+            <permission
+                android:name="com.nokunda.one.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>
+            <application>
+                <!-- Replace "PASTE YOUR GOOGLE MAPS API KEY HERE" with the Google API key you obtained -->
+                <meta-data
+                    android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyCpnHWiiEbIA9XTxU4xLK4gsgAwUXqOZnA"/>
+            </application>
+        </manifest>
+    </android>
+    <mobileweb>
+        <precache/>
+        <splash>
+            <enabled>true</enabled>
+            <inline-css-images>true</inline-css-images>
+        </splash>
+        <theme>default</theme>
+    </mobileweb>
+    <modules>
+        <module platform="android">facebook</module>
+        <module platform="iphone">facebook</module>
+        <module platform="android">ti.map</module>
+        <module platform="iphone">ti.map</module>
+    </modules>
+    <modules>
+        <module platform="android">facebook</module>
+        <module platform="iphone">facebook</module>
+        <module platform="android">ti.map</module>
+        <module platform="iphone">ti.map</module>
+    </modules>
+    <deployment-targets>
+        <target device="iphone">true</target>
+        <target device="ipad">true</target>
+        <target device="android">true</target>
+        <target device="blackberry">false</target>
+        <target device="mobileweb">false</target>
+        <target device="tizen">false</target>
+    </deployment-targets>
+    <sdk-version>3.2.3.GA</sdk-version>
+</ti:app>
