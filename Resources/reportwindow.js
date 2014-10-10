@@ -56,7 +56,7 @@ function reportwindow() {
 
 	var btn = Ti.UI.createButton({
 
-		title : 'Capture Kunda >>',
+		title : 'Capture Kunda',
 
 		font : {
 
@@ -64,7 +64,7 @@ function reportwindow() {
 
 			fontWeight : 'bold',
 
-			fontFamily : 'Helvetica Neue'
+			fontFamily : 'Chalkduster'
 
 		},
 
@@ -72,13 +72,13 @@ function reportwindow() {
 
 		height : '15%',
 
-		//top : '40%',
+		top : '55%',
 
-		bottom : '7%',
+		//bottom : '7%',
 
 		color : '#ffffff',
 
-		backgroundColor : '#3498db',
+		backgroundColor : '#5faee3',
 
 		borderRadius : 6,
 
@@ -88,7 +88,7 @@ function reportwindow() {
 
 	var btn2 = Ti.UI.createButton({
 
-		title : 'Report a Meter >>',
+		title : 'Report a Meter ',
 
 		font : {
 
@@ -96,7 +96,7 @@ function reportwindow() {
 
 			fontWeight : 'bold',
 
-			fontFamily : 'Helvetica Neue'
+			fontFamily : 'Chalkduster'
 
 		},
 
@@ -104,17 +104,36 @@ function reportwindow() {
 
 		height : '15%',
 
-		top : '60%',
+		//top : '60%',
 
-		//bottom : '7%',
+		bottom : '13%',
 
 		color : '#ffffff',
 
-		backgroundColor : '#3498db',
+		backgroundColor : '#5faee3',
 
 		borderRadius : 6,
 
 	});
+	
+	/////////////////////////
+	
+	
+	var about = Ti.UI.createImageView({
+		height : '7%',
+		//width : '100%',
+		//top : 0,
+		left : '85%',
+		bottom:"1%",
+		image : 'info.jpg'
+	});
+	rwindow.add(about);
+	
+	
+	/////////////////////////
+	
+	
+	
 
 	btn2.addEventListener('click', function(e) {
 
