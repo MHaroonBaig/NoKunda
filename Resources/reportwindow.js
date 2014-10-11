@@ -115,10 +115,10 @@ function reportwindow() {
 		borderRadius : 6,
 
 	});
-	
+
 	/////////////////////////
-	
-	
+
+
 	var about = Ti.UI.createImageView({
 		height : '7%',
 		//width : '100%',
@@ -127,13 +127,14 @@ function reportwindow() {
 		bottom:"1%",
 		image : 'info.jpg'
 	});
-	rwindow.add(about);
-	
-	
+
+	rwindow.add(about); //need to add a listener
+
+
 	/////////////////////////
-	
-	
-	
+
+
+
 
 	btn2.addEventListener('click', function(e) {
 
