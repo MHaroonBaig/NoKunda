@@ -128,7 +128,7 @@ function reportwindow() {
 		image : 'info.jpg'
 	});
 
-	rwindow.add(about); //need to add a listener
+	rwindow.add(about); //need to add a listener and make it darker
 
 
 	/////////////////////////
