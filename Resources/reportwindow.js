@@ -282,14 +282,21 @@ function reportwindow() {
 				}
 
 				lowerview.add(details);
+				/////////// E-mail ////////////
+				var details2 = textfieldsetup();
+				details2.hintText = "Email: ";
+				details2.top = "4%";
+				lowerview.add(details2);
+				
 
+				//////////////////////////////
 				submitbtn = genericButton();
 
 				submitbtn.title = 'Submit Report!';
 
-				submitbtn.top = '10%';
+				submitbtn.top = '7%';
 
-				submitbtn.height = '20%';
+				submitbtn.height = '15%';
 
 				submitbtn.left = '33%';
 
@@ -412,6 +419,8 @@ function reportwindow() {
 						location_name : details.value,
 
 						"incident_photo[]" : img,
+						
+						person_email: details2.text,
 
 						incident_category : shit,
 
@@ -427,7 +436,7 @@ function reportwindow() {
 
 				fbbtn.title = 'Facebook Share';
 
-				fbbtn.top = '8%';
+				fbbtn.top = '6%';
 
 				fbbtn.height = '15%';
 
