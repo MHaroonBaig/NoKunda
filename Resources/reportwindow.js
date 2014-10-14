@@ -183,6 +183,8 @@ function reportwindow() {
 					width : 200,
 
 					height : 200,
+					
+					
 
 					transform : Ti.UI.create2DMatrix().rotate(90)
 
@@ -280,12 +282,36 @@ function reportwindow() {
 
 					lowerview.add(meterno);
 				}
+				else {
+					
+					var meterno1 = genericLabel();
+					meterno1.text = "Description: ";
+					meterno1.textAlign = Ti.UI.LEFT;
+
+					lowerview.add(meterno1);
+					
+					
+				}
+				
+				var meterno11 = genericLabel();
+					meterno11.text = "Enter your Email: ";
+					meterno11.textAlign = Ti.UI.LEFT;
+					//meterno11.top = "20%";
+
+					
+				
+				
+				
 
 				lowerview.add(details);
+				lowerview.add(meterno11);
+					
+				
+				
 				/////////// E-mail ////////////
 				var details2 = textfieldsetup();
 				details2.hintText = "Email: ";
-				details2.top = "4%";
+				details2.top = "1%";
 				lowerview.add(details2);
 				
 
@@ -294,11 +320,11 @@ function reportwindow() {
 
 				submitbtn.title = 'Submit Report!';
 
-				submitbtn.top = '7%';
+				submitbtn.top = '5%';
 
-				submitbtn.height = '15%';
+				submitbtn.height = '12%';
 
-				submitbtn.left = '33%';
+				submitbtn.left = '32%';
 
 				submitbtn.addEventListener('click', function(e) {
 
@@ -436,11 +462,11 @@ function reportwindow() {
 
 				fbbtn.title = 'Facebook Share';
 
-				fbbtn.top = '6%';
+				fbbtn.top = '4%';
 
-				fbbtn.height = '15%';
+				fbbtn.height = '12%';
 
-				fbbtn.left = '33%';
+				fbbtn.left = '32%';
 
 				fbbtn.addEventListener('click', function(e) {
 
@@ -773,7 +799,7 @@ function createwindows() {
 
 	});
 
-	win.add(bannerTop);
+	//win.add(bannerTop);
 
 	if (Ti.Platform.osname == "android") {
 
@@ -827,7 +853,7 @@ function makeimview() {
 
 		//top:'%',
 
-		borderRadius : 3,
+		borderRadius : 8,
 
 		//top:'7%'
 
