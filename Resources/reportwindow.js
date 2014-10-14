@@ -207,6 +207,22 @@ function reportwindow() {
 				topview.layout = 'horizontal';
 
 				camwindow.add(topview);
+				
+				
+				/////////////// background //////////
+				
+		
+				var bgImage2 = Ti.UI.createImageView({
+					height : '100%',
+					width : '100%',
+					top : 0,
+					left : 0,
+					image : 'back2.png'
+				}); 
+
+				camwindow.add(bgImage2);
+				
+				//////////////////////////////////
 
 				var imview = makeimview();
 
@@ -287,16 +303,19 @@ function reportwindow() {
 					var meterno1 = genericLabel();
 					meterno1.text = "Description: ";
 					meterno1.textAlign = Ti.UI.LEFT;
-
+					//meterno1.opacity = 0.25;
+					//meterno1.color = '#000',
+					meterno1.backgroundColor = 'transparent';
 					lowerview.add(meterno1);
 					
 					
 				}
 				
 				var meterno11 = genericLabel();
-					meterno11.text = "Enter your Email: ";
+					meterno11.text = "Enter your Email for feedback: ";
 					meterno11.textAlign = Ti.UI.LEFT;
 					//meterno11.top = "20%";
+					meterno11.backgroundColor = 'transparent';
 
 					
 				
@@ -543,6 +562,7 @@ function reportwindow() {
 				lowerview.add(fbbtn);
 
 				var displaydata = genericLabel();
+				displaydata.backgroundColor = 'transparent';
 
 				displaydata.font = {
 
