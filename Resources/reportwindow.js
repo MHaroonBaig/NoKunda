@@ -30,7 +30,7 @@ function reportwindow() {
 		width : '100%',
 		top : 0,
 		left : 0,
-		image : 'Default-Portrait-736@3x.png'
+		image : 'back.png'
 	});
 	rwindow.add(bgImage);
 
