@@ -215,7 +215,7 @@ function reportwindow() {
 				var bgImage2 = Ti.UI.createImageView({
 					height : '100%',
 					width : '100%',
-					top : 0,
+					top : "10%",
 					left : 0,
 					image : 'back2.png'
 				}); 
@@ -295,6 +295,7 @@ function reportwindow() {
 					var meterno = genericLabel();
 					meterno.text = "Meter No: ";
 					meterno.textAlign = Ti.UI.LEFT;
+					meterno.backgroundColor = 'transparent';
 
 					lowerview.add(meterno);
 				}
