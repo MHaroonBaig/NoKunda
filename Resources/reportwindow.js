@@ -64,7 +64,7 @@ function reportwindow() {
 
 			fontWeight : 'bold',
 
-			fontFamily : 'Chalkduster'
+			fontFamily : 'Helvetica Neue'
 
 		},
 
@@ -78,7 +78,7 @@ function reportwindow() {
 
 		color : '#ffffff',
 
-		backgroundColor : '#5faee3',
+		backgroundColor : '#2079b4',
 
 		borderRadius : 6,
 
@@ -96,7 +96,7 @@ function reportwindow() {
 
 			fontWeight : 'bold',
 
-			fontFamily : 'Chalkduster'
+			fontFamily : 'Helvetica Neue'
 
 		},
 
@@ -110,7 +110,7 @@ function reportwindow() {
 
 		color : '#ffffff',
 
-		backgroundColor : '#5faee3',
+		backgroundColor : '#2079b4',
 
 		borderRadius : 6,
 
@@ -186,7 +186,7 @@ function reportwindow() {
 					
 					
 
-					transform : Ti.UI.create2DMatrix().rotate(90)
+					//transform : Ti.UI.create2DMatrix().rotate(90)
 
 				});
 
@@ -338,7 +338,7 @@ function reportwindow() {
 				//////////////////////////////
 				submitbtn = genericButton();
 
-				submitbtn.title = 'Submit Report!';
+				submitbtn.title = 'Submit Report';
 
 				submitbtn.top = '5%';
 
@@ -773,6 +773,7 @@ function createwindows() {
 		title : 'Submitting Report',
 
 		backgroundColor : '#FFFFFF',
+		barColor:"#2079b4",
 
 		//width: rwidth,
 
@@ -862,7 +863,7 @@ function makeimview() {
 
 		//image:theimg,
 
-		transform : Ti.UI.create2DMatrix().rotate(90),
+		//transform : Ti.UI.create2DMatrix().rotate(90),
 
 		width : '35%',
 
@@ -904,7 +905,7 @@ function genericButton() {
 
 		width : '40%',
 
-		height : '30%',
+		height : '25%',
 
 		enabled : true,
 
@@ -924,7 +925,7 @@ function genericButton() {
 
 		color : '#ffffff',
 
-		backgroundColor : '#3498db',
+		backgroundColor : '#2079b4',
 
 		borderRadius : 6,
 
