@@ -92,11 +92,14 @@ function reportwindow() {
 
 		//backgroundColor : '#2079b4',
 		backgroundColor: "#2079B4",
-		borderColor: "#2079b4",
-		borderWidth:2,
 		
 		
-		borderRadius : 6,
+		borderColor: "#092436",
+		borderWidth:3,
+		
+		borderRadius : 12,
+		
+		
 
 	});
 
@@ -129,10 +132,10 @@ function reportwindow() {
 		//backgroundColor : '#2079b4',
 
 backgroundColor: "#2079B4",
-		borderColor: "#93BEDB",
-		borderWidth:4,
+		borderColor: "#092436",
+		borderWidth:3,
 		
-		borderRadius : 6,
+		borderRadius : 12,
 
 	});
 
@@ -520,11 +523,13 @@ backgroundColor: "#2079B4",
 					
 					
 					/////////////
+					
+					var status = details.value + " #NoKunda ";
 
 	var f = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, 'KS_nav_views.png');
 	var blob = f.read();
 					twitter.share({
-						message : 'Hello, world!',
+						message : status,
 						image :blob,
 						success : function() {
 							alert('Tweeted!');
