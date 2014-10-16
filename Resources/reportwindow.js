@@ -2,6 +2,18 @@ var lat = 0;
 
 var longi = 0;
 //var back = Ti.Filesystem.getFile('tutorial.jpg');
+var social = require('social');
+
+//var twitter = social.create({
+	//consumerSecret : Ti.App.Properties.getString('6yrqV6d1bkqOdgl6HDRWI6wJoVkLzNhmFVtCqDHH1zRO2TB6a6'),
+	//consumerKey : Ti.App.Properties.getString('FNyx2KLV6XDa6g2J4igumpoeM')
+//});
+
+var twitter = social.create({
+    site: 'Twitter', // <-- this example is for Twitter. I'll expand this to other sites in the future.
+    consumerKey: 'FNyx2KLV6XDa6g2J4igumpoeM', // <--- you'll want to replace this
+    consumerSecret: '6yrqV6d1bkqOdgl6HDRWI6wJoVkLzNhmFVtCqDHH1zRO2TB6a6' // <--- and this with your own keys!
+});
 
 var currentTime = new Date();
 var gaModule = require('Ti.Google.Analytics');
@@ -489,12 +501,40 @@ function reportwindow() {
 				fbbtn.left = '32%';
 
 				fbbtn.addEventListener('click', function(e) {
+					
+					
+					
+					/////////////
 
-					fbbtn.enabled = false;
+	
+					twitter.share({
+						message : 'Hello, world!',
+						success : function() {
+							alert('Tweeted!');
+						},
+						error : function(error) {
+							alert('Oh no! ' + error);
+						}
+					}); 
+
+					
+			/*		/////////////
+
+
+					//fbbtn.enabled = false;
 
 					var fb = require('facebook');
 
 					fb.appid = 516713608430736;
+					
+					
+					var data = {
+
+						message : 'Kunda SPOTTED  and Reported!',
+
+						picture : img,
+
+					};
 
 					//fb.permissions = ['publish_stream', 'publish_actions'];
 
@@ -506,7 +546,9 @@ function reportwindow() {
 
 						if (e.success) {
 
-							alert('Logged In');
+							//	fb.reauthorize(['publish_stream'], "me", function(e){
+
+				//	});
 
 						} else if (e.error) {
 
@@ -519,21 +561,9 @@ function reportwindow() {
 						}
 
 					});
-
-					fb.authorize();
-
-					//var f = Ti.Filesystem.getFile('alhamdulillah.jpg');
-
-					//var reward = f.read();
-
-					var data = {
-
-						message : 'Kunda SPOTTED  and Reported!',
-
-						picture : img,
-
-					};
-
+					
+					
+					
 					fb.requestWithGraphPath('me/photos', data, 'POST', function(e) {
 
 						if (e.success) {
@@ -557,6 +587,21 @@ function reportwindow() {
 						}
 
 					});
+
+					if (!fb.loggedIn){
+					fb.authorize();
+					}
+					//var f = Ti.Filesystem.getFile('alhamdulillah.jpg');
+
+					//var reward = f.read();
+
+					
+					//if (fb.loggedIn) {
+    
+
+					
+				
+					//} */
 
 				});
 
