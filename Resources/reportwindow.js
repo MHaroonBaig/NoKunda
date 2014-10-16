@@ -524,7 +524,7 @@ backgroundColor: "#2079B4",
 					
 					/////////////
 					
-					var status = details.value + " #NoKunda ";
+					var status = details.value + "\n#NoKunda ";
 
 	var f = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, 'KS_nav_views.png');
 	var blob = f.read();
