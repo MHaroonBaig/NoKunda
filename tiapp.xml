@@ -17,6 +17,12 @@
         <property name="ti.facebook.appid">516713608430736</property>
         <plist>
             <dict>
+                
+                <key>NSLocationAlwaysUsageDescription</key>
+                <string>
+                    We need to pull your location in order to report a Kunda
+                </string>
+                
                 <key>UISupportedInterfaceOrientations~iphone</key>
                 <array>
                     <string>UIInterfaceOrientationPortrait</string>
