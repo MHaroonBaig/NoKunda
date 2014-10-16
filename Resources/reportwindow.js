@@ -90,8 +90,12 @@ function reportwindow() {
 
 		color : '#ffffff',
 
-		backgroundColor : '#2079b4',
-
+		//backgroundColor : '#2079b4',
+		backgroundColor: "#2079B4",
+		borderColor: "#2079b4",
+		borderWidth:2,
+		
+		
 		borderRadius : 6,
 
 	});
@@ -122,8 +126,12 @@ function reportwindow() {
 
 		color : '#ffffff',
 
-		backgroundColor : '#2079b4',
+		//backgroundColor : '#2079b4',
 
+backgroundColor: "#2079B4",
+		borderColor: "#93BEDB",
+		borderWidth:4,
+		
 		borderRadius : 6,
 
 	});
@@ -351,6 +359,9 @@ function reportwindow() {
 				submitbtn = genericButton();
 
 				submitbtn.title = 'Submit Report';
+				submitbtn.backgroundColor = "#4C93C3";
+				submitbtn.borderColor = "#2D5875";
+				submitbtn.borderWidth = 2;
 
 				submitbtn.top = '5%';
 
@@ -493,6 +504,7 @@ function reportwindow() {
 				fbbtn = genericButton();
 				fbbtn.backgroundColor = "#1dcaff";
 				fbbtn.borderColor = "#0084b4";
+				//fbbtn.backgroundSelectedColor  = "#000";
 				fbbtn.borderWidth = 2;
 
 				fbbtn.title = 'Tweet it';
@@ -972,10 +984,15 @@ function genericButton() {
 		//paddingTop : 7,
 
 		//paddingBottom : 7,
+		
+		
+		
 
 		color : '#ffffff',
 
-		backgroundColor : '#2079b4',
+		backgroundColor : '#4C93C3',
+		borderColor : "#2D5875",
+		borderWidth : 2,
 
 		borderRadius : 6,
 
