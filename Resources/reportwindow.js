@@ -2,7 +2,7 @@ var lat = 0;
 
 var longi = 0;
 //var back = Ti.Filesystem.getFile('tutorial.jpg');
-var social = require('social');
+var social = require('social_plus');
 
 //var twitter = social.create({
 	//consumerSecret : Ti.App.Properties.getString('6yrqV6d1bkqOdgl6HDRWI6wJoVkLzNhmFVtCqDHH1zRO2TB6a6'),
@@ -10,7 +10,7 @@ var social = require('social');
 //});
 
 var twitter = social.create({
-    site: 'Twitter', // <-- this example is for Twitter. I'll expand this to other sites in the future.
+    //site: 'Twitter', // <-- this example is for Twitter. I'll expand this to other sites in the future.
     consumerKey: 'FNyx2KLV6XDa6g2J4igumpoeM', // <--- you'll want to replace this
     consumerSecret: '6yrqV6d1bkqOdgl6HDRWI6wJoVkLzNhmFVtCqDHH1zRO2TB6a6' // <--- and this with your own keys!
 });
@@ -491,8 +491,11 @@ function reportwindow() {
 				lowerview.add(submitbtn);
 
 				fbbtn = genericButton();
+				fbbtn.backgroundColor = "#1dcaff";
+				fbbtn.borderColor = "#0084b4";
+				fbbtn.borderWidth = 2;
 
-				fbbtn.title = 'Facebook Share';
+				fbbtn.title = 'Tweet it';
 
 				fbbtn.top = '4%';
 
@@ -506,9 +509,11 @@ function reportwindow() {
 					
 					/////////////
 
-	
+	var f = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, 'KS_nav_views.png');
+	var blob = f.read();
 					twitter.share({
 						message : 'Hello, world!',
+						image :blob,
 						success : function() {
 							alert('Tweeted!');
 						},
