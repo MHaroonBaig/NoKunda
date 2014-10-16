@@ -5,14 +5,14 @@ var longi = 0;
 var social = require('social_plus');
 
 //var twitter = social.create({
-	//consumerSecret : Ti.App.Properties.getString('6yrqV6d1bkqOdgl6HDRWI6wJoVkLzNhmFVtCqDHH1zRO2TB6a6'),
-	//consumerKey : Ti.App.Properties.getString('FNyx2KLV6XDa6g2J4igumpoeM')
+//consumerSecret : Ti.App.Properties.getString('6yrqV6d1bkqOdgl6HDRWI6wJoVkLzNhmFVtCqDHH1zRO2TB6a6'),
+//consumerKey : Ti.App.Properties.getString('FNyx2KLV6XDa6g2J4igumpoeM')
 //});
 
 var twitter = social.create({
-    //site: 'Twitter', // <-- this example is for Twitter. I'll expand this to other sites in the future.
-    consumerKey: 'FNyx2KLV6XDa6g2J4igumpoeM', // <--- you'll want to replace this
-    consumerSecret: '6yrqV6d1bkqOdgl6HDRWI6wJoVkLzNhmFVtCqDHH1zRO2TB6a6' // <--- and this with your own keys!
+	//site: 'Twitter', // <-- this example is for Twitter. I'll expand this to other sites in the future.
+	consumerKey : 'FNyx2KLV6XDa6g2J4igumpoeM', // <--- you'll want to replace this
+	consumerSecret : '6yrqV6d1bkqOdgl6HDRWI6wJoVkLzNhmFVtCqDHH1zRO2TB6a6' // <--- and this with your own keys!
 });
 
 var currentTime = new Date();
@@ -91,15 +91,12 @@ function reportwindow() {
 		color : '#ffffff',
 
 		//backgroundColor : '#2079b4',
-		backgroundColor: "#2079B4",
-		
-		
-		borderColor: "#092436",
-		borderWidth:3,
-		
+		backgroundColor : "#2079B4",
+
+		borderColor : "#092436",
+		borderWidth : 3,
+
 		borderRadius : 12,
-		
-		
 
 	});
 
@@ -131,33 +128,29 @@ function reportwindow() {
 
 		//backgroundColor : '#2079b4',
 
-backgroundColor: "#2079B4",
-		borderColor: "#092436",
-		borderWidth:3,
-		
+		backgroundColor : "#2079B4",
+		borderColor : "#092436",
+		borderWidth : 3,
+
 		borderRadius : 12,
 
 	});
 
 	/////////////////////////
 
-
 	var about = Ti.UI.createImageView({
 		height : '7%',
 		//width : '100%',
 		//top : 0,
 		left : '85%',
-		bottom:"1%",
+		bottom : "1%",
 		image : 'info.jpg'
 	});
 
-	rwindow.add(about); //need to add a listener and make it darker
-
+	rwindow.add(about);
+	//need to add a listener and make it darker
 
 	/////////////////////////
-
-
-
 
 	btn2.addEventListener('click', function(e) {
 
@@ -206,8 +199,6 @@ backgroundColor: "#2079B4",
 					width : 200,
 
 					height : 200,
-					
-					
 
 					//transform : Ti.UI.create2DMatrix().rotate(90)
 
@@ -230,21 +221,19 @@ backgroundColor: "#2079B4",
 				topview.layout = 'horizontal';
 
 				camwindow.add(topview);
-				
-				
+
 				/////////////// background //////////
-				
-		
+
 				var bgImage2 = Ti.UI.createImageView({
 					height : '100%',
 					width : '100%',
 					top : "10%",
 					left : 0,
 					image : 'back2.png'
-				}); 
+				});
 
 				camwindow.add(bgImage2);
-				
+
 				//////////////////////////////////
 
 				var imview = makeimview();
@@ -321,9 +310,8 @@ backgroundColor: "#2079B4",
 					meterno.backgroundColor = 'transparent';
 
 					lowerview.add(meterno);
-				}
-				else {
-					
+				} else {
+
 					var meterno1 = genericLabel();
 					meterno1.text = "Description: ";
 					meterno1.textAlign = Ti.UI.LEFT;
@@ -331,32 +319,23 @@ backgroundColor: "#2079B4",
 					//meterno1.color = '#000',
 					meterno1.backgroundColor = 'transparent';
 					lowerview.add(meterno1);
-					
-					
-				}
-				
-				var meterno11 = genericLabel();
-					meterno11.text = "Enter your Email for feedback: ";
-					meterno11.textAlign = Ti.UI.LEFT;
-					//meterno11.top = "20%";
-					meterno11.backgroundColor = 'transparent';
 
-					
-				
-				
-				
+				}
+
+				var meterno11 = genericLabel();
+				meterno11.text = "Enter your Email for feedback: ";
+				meterno11.textAlign = Ti.UI.LEFT;
+				//meterno11.top = "20%";
+				meterno11.backgroundColor = 'transparent';
 
 				lowerview.add(details);
 				lowerview.add(meterno11);
-					
-				
-				
+
 				/////////// E-mail ////////////
 				var details2 = textfieldsetup();
 				details2.hintText = "Email: ";
 				details2.top = "1%";
 				lowerview.add(details2);
-				
 
 				//////////////////////////////
 				submitbtn = genericButton();
@@ -491,8 +470,8 @@ backgroundColor: "#2079B4",
 						location_name : details.value,
 
 						"incident_photo[]" : img,
-						
-						person_email: details2.text,
+
+						person_email : details2.text,
 
 						incident_category : shit,
 
@@ -519,111 +498,103 @@ backgroundColor: "#2079B4",
 				fbbtn.left = '32%';
 
 				fbbtn.addEventListener('click', function(e) {
-					
-					
-					
+
 					/////////////
-					
+
 					var status = details.value + "\n#NoKunda ";
 
-	var f = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, 'KS_nav_views.png');
-	var blob = f.read();
+					if (shit == '2')
+						status = "Help combating power theft in Paistan, use #NoKunda";
+
+					var f = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, 'KS_nav_views.png');
+					var blob = f.read();
 					twitter.share({
 						message : status,
-						image :blob,
+						image : blob,
 						success : function() {
 							alert('Tweeted!');
 						},
 						error : function(error) {
 							alert('Oh no! ' + error);
 						}
-					}); 
-
-					
-			/*		/////////////
-
-
-					//fbbtn.enabled = false;
-
-					var fb = require('facebook');
-
-					fb.appid = 516713608430736;
-					
-					
-					var data = {
-
-						message : 'Kunda SPOTTED  and Reported!',
-
-						picture : img,
-
-					};
-
-					//fb.permissions = ['publish_stream', 'publish_actions'];
-
-					fb.permissions = ['publish_stream'];
-
-					fb.forceDialogAuth = true;
-
-					fb.addEventListener('login', function(e) {
-
-						if (e.success) {
-
-							//	fb.reauthorize(['publish_stream'], "me", function(e){
-
-				//	});
-
-						} else if (e.error) {
-
-							alert(e.error);
-
-						} else if (e.cancelled) {
-
-							alert("Canceled");
-
-						}
-
-					});
-					
-					
-					
-					fb.requestWithGraphPath('me/photos', data, 'POST', function(e) {
-
-						if (e.success) {
-
-							alert("Success!  From FB: " + e.result);
-
-							//alert("Successfully posted to facebook");
-
-						} else {
-
-							if (e.error) {
-
-								alert('Error:' + e.error);
-
-							} else {
-
-								alert("Unkown result");
-
-							}
-
-						}
-
 					});
 
-					if (!fb.loggedIn){
-					fb.authorize();
-					}
-					//var f = Ti.Filesystem.getFile('alhamdulillah.jpg');
+					/*		/////////////
 
-					//var reward = f.read();
+					 //fbbtn.enabled = false;
 
-					
-					//if (fb.loggedIn) {
-    
+					 var fb = require('facebook');
 
-					
-				
-					//} */
+					 fb.appid = 516713608430736;
+
+					 var data = {
+
+					 message : 'Kunda SPOTTED  and Reported!',
+
+					 picture : img,
+
+					 };
+
+					 //fb.permissions = ['publish_stream', 'publish_actions'];
+
+					 fb.permissions = ['publish_stream'];
+
+					 fb.forceDialogAuth = true;
+
+					 fb.addEventListener('login', function(e) {
+
+					 if (e.success) {
+
+					 //	fb.reauthorize(['publish_stream'], "me", function(e){
+
+					 //	});
+
+					 } else if (e.error) {
+
+					 alert(e.error);
+
+					 } else if (e.cancelled) {
+
+					 alert("Canceled");
+
+					 }
+
+					 });
+
+					 fb.requestWithGraphPath('me/photos', data, 'POST', function(e) {
+
+					 if (e.success) {
+
+					 alert("Success!  From FB: " + e.result);
+
+					 //alert("Successfully posted to facebook");
+
+					 } else {
+
+					 if (e.error) {
+
+					 alert('Error:' + e.error);
+
+					 } else {
+
+					 alert("Unkown result");
+
+					 }
+
+					 }
+
+					 });
+
+					 if (!fb.loggedIn){
+					 fb.authorize();
+					 }
+					 //var f = Ti.Filesystem.getFile('alhamdulillah.jpg');
+
+					 //var reward = f.read();
+
+					 //if (fb.loggedIn) {
+
+					 //} */
 
 				});
 
@@ -789,7 +760,7 @@ backgroundColor: "#2079B4",
 
 	nokundalabel.top = '10%';
 
-////// Label //////
+	////// Label //////
 
 	//rwindow.add(nokundalabel);
 
@@ -840,7 +811,7 @@ function createwindows() {
 		title : 'Submitting Report',
 
 		backgroundColor : '#FFFFFF',
-		barColor:"#2079b4",
+		barColor : "#2079b4",
 
 		//width: rwidth,
 
@@ -989,9 +960,6 @@ function genericButton() {
 		//paddingTop : 7,
 
 		//paddingBottom : 7,
-		
-		
-		
 
 		color : '#ffffff',
 
