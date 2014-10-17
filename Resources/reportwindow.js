@@ -393,7 +393,7 @@ function reportwindow() {
 					};
 
 					rclient.onsendstream = function(e) {
-						alert("Hello");
+						
 						var ee = parseInt((100 * (parseFloat(e.progress)) ));
 						displaydata.text = 'Upload: ' + parseInt((100 * (parseFloat(e.progress)) )) + '%';
 						if (ee == 100) {
@@ -629,7 +629,7 @@ function reportwindow() {
 
 				};
 
-				coordss.top = '2%';
+				coordss.top = '1%';
 				coordss.backgroundColor = 'transparent';
 				
 				
