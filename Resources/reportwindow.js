@@ -2,7 +2,7 @@ var lat = 0;
 
 var longi = 0;
 //var back = Ti.Filesystem.getFile('tutorial.jpg');
-var social = require('social_plus');
+var social = require('social');
 
 //var twitter = social.create({
 //consumerSecret : Ti.App.Properties.getString('6yrqV6d1bkqOdgl6HDRWI6wJoVkLzNhmFVtCqDHH1zRO2TB6a6'),
