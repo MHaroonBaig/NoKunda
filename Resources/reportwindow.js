@@ -55,7 +55,7 @@ function reportwindow() {
 	//setupGPS();
 
 	var myProgress = Ti.UI.createProgressBar({
-		top : '7%',
+		top : '5%',
 		width : '100%',
 		height : 4,
 		min : 0,
@@ -314,6 +314,7 @@ function reportwindow() {
 
 					var meterno1 = genericLabel();
 					meterno1.text = "Description: ";
+					
 					meterno1.textAlign = Ti.UI.LEFT;
 					//meterno1.opacity = 0.25;
 					//meterno1.color = '#000',
@@ -323,7 +324,7 @@ function reportwindow() {
 				}
 
 				var meterno11 = genericLabel();
-				meterno11.text = "Enter your Email for feedback: ";
+				meterno11.text = "\nEnter your Email for feedback: ";
 				meterno11.textAlign = Ti.UI.LEFT;
 				//meterno11.top = "20%";
 				meterno11.backgroundColor = 'transparent';
@@ -385,13 +386,14 @@ function reportwindow() {
 
 					rclient.onload = function() {
 
-						//alert("responseText: " + this.responseText);
+						alert("responseText: " + this.responseText);
 
 						curlevel(1);
 
 					};
 
 					rclient.onsendstream = function(e) {
+						alert("Hello");
 						var ee = parseInt((100 * (parseFloat(e.progress)) ));
 						displaydata.text = 'Upload: ' + parseInt((100 * (parseFloat(e.progress)) )) + '%';
 						if (ee == 100) {
@@ -627,9 +629,11 @@ function reportwindow() {
 
 				};
 
-				coordss.top = '4%';
-
-				//lowerview.add(coordss);
+				coordss.top = '2%';
+				coordss.backgroundColor = 'transparent';
+				
+				
+				lowerview.add(coordss);
 
 				if (Ti.Platform.osname == "android") {
 
@@ -894,7 +898,7 @@ function genericview() {
 	return myview;
 
 }
-
+///// imageimage
 function makeimview() {
 
 	var imView = Ti.UI.createImageView({
@@ -903,17 +907,18 @@ function makeimview() {
 
 		//transform : Ti.UI.create2DMatrix().rotate(90),
 
-		width : '35%',
+		width : '45%',
 
-		height : '90%',
+		height : '75%',
 
 		//bottom:'10%',
 
 		autorotate : true,
 
 		//top:'%',
-
-		borderRadius : 8,
+		borderColor:"#2D5875",
+		borderWidth:2,
+		borderRadius : 12,
 
 		//top:'7%'
 
@@ -1076,6 +1081,10 @@ function textfieldsetup() {
 		height : '15%',
 
 		width : '100%',
+		
+		borderColor : "#2D5875",
+		borderWidth:1,
+		
 
 		//left : '3%',
 
@@ -1113,7 +1122,7 @@ function textfieldsetup() {
 
 		borderWidth : 3,
 
-		borderColor : '#ecf0f1',
+		//borderColor : '#ecf0f1',
 
 		keyboardType : Titanium.UI.KEYBOARD_DEFAULT,
 
