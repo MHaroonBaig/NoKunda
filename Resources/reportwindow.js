@@ -311,9 +311,10 @@ function reportwindow() {
 
 					lowerview.add(meterno);
 				} else {
-
+					details.hintText = "Please enter your location ";
 					var meterno1 = genericLabel();
 					meterno1.text = "Description: ";
+					
 					
 					meterno1.textAlign = Ti.UI.LEFT;
 					//meterno1.opacity = 0.25;
