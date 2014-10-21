@@ -411,7 +411,6 @@ function reportwindow() {
 							}
 						});
 
-
 						var tweetField = textfieldsetup();
 						tweetField.hintText = "Post your Tweet ..";
 						tweetField.top = "4%";
@@ -419,8 +418,6 @@ function reportwindow() {
 						tweetField.width = "90%";
 						tweetField.height = "10%";
 						tweetField.borderColor = "#092436";
-						
-						
 
 						var btnSkip = Ti.UI.createButton({
 							title : 'Skip',
@@ -453,9 +450,9 @@ function reportwindow() {
 							});
 
 						});
-						
+
 						btnSkip.addEventListener('click', function(e) {
-						camwindow.close();
+							camwindow.close();
 						});
 
 						vwAlert.add(lblMessage);
