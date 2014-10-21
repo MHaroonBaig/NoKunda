@@ -581,83 +581,6 @@ function reportwindow() {
 						}
 					});
 
-					/*		/////////////
-
-					 //fbbtn.enabled = false;
-
-					 var fb = require('facebook');
-
-					 fb.appid = 516713608430736;
-
-					 var data = {
-
-					 message : 'Kunda SPOTTED  and Reported!',
-
-					 picture : img,
-
-					 };
-
-					 //fb.permissions = ['publish_stream', 'publish_actions'];
-
-					 fb.permissions = ['publish_stream'];
-
-					 fb.forceDialogAuth = true;
-
-					 fb.addEventListener('login', function(e) {
-
-					 if (e.success) {
-
-					 //	fb.reauthorize(['publish_stream'], "me", function(e){
-
-					 //	});
-
-					 } else if (e.error) {
-
-					 alert(e.error);
-
-					 } else if (e.cancelled) {
-
-					 alert("Canceled");
-
-					 }
-
-					 });
-
-					 fb.requestWithGraphPath('me/photos', data, 'POST', function(e) {
-
-					 if (e.success) {
-
-					 alert("Success!  From FB: " + e.result);
-
-					 //alert("Successfully posted to facebook");
-
-					 } else {
-
-					 if (e.error) {
-
-					 alert('Error:' + e.error);
-
-					 } else {
-
-					 alert("Unkown result");
-
-					 }
-
-					 }
-
-					 });
-
-					 if (!fb.loggedIn){
-					 fb.authorize();
-					 }
-					 //var f = Ti.Filesystem.getFile('alhamdulillah.jpg');
-
-					 //var reward = f.read();
-
-					 //if (fb.loggedIn) {
-
-					 //} */
-
 				});
 
 				lowerview.add(fbbtn);
@@ -1136,7 +1059,8 @@ function textareasetup() {
 
 function textfieldsetup() {
 
-	var title = Ti.UI.createTextField({//renamed TextField to TextArea for multi row field, may cause error on submission - test
+	var title = Ti.UI.createTextField({
+		//renamed TextField to TextArea for multi row field, may cause error on submission - test
 
 		height : '15%',
 
@@ -1350,4 +1274,3 @@ function getpending() {
 	return pendingnum;
 
 }
-
