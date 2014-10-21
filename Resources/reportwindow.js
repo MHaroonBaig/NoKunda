@@ -401,12 +401,12 @@ function reportwindow() {
 						});
 
 						var lblMessage = Ti.UI.createLabel({
-							text : 'Tweet it',
+							text : 'Spread the word',
 							top : 10,
 							color : 'white',
 							font : {
-								//fontWeight : 'bold',
-								fontSize : '13',
+								fontWeight : 'bold',
+								fontSize : '19',
 								fontFamily : 'Helvetica Neue'
 							}
 						});
@@ -414,29 +414,34 @@ function reportwindow() {
 
 						var tweetField = textfieldsetup();
 						tweetField.hintText = "Post your Tweet ..";
-						tweetField.top = "20";
+						tweetField.top = "4%";
 						tweetField.maxLength = 130;
+						tweetField.width = "90%";
+						tweetField.height = "10%";
+						tweetField.borderColor = "#092436";
+						
 						
 
 						var btnSkip = Ti.UI.createButton({
 							title : 'Skip',
 							width : '43%',
-							top : '35',
+							top : '200',
 							font : {
 								fontWeight : 'bold',
 								fontSize : '16'
 							}
 						});
+						btnSkip.left = '71%';
 
 						tweetbtn = genericButton();
 						tweetbtn.backgroundColor = "#1dcaff";
-						tweetbtn.borderColor = "#0084b4";
+						tweetbtn.borderColor = "#092436";
 						//fbbtn.backgroundSelectedColor  = "#000";
 						tweetbtn.borderWidth = 2;
 
 						tweetbtn.title = 'Tweet it';
 
-						tweetbtn.top = '95';
+						tweetbtn.top = '23';
 
 						tweetbtn.height = '12%';
 
@@ -447,6 +452,10 @@ function reportwindow() {
 								tweetStatus : tweetField.value
 							});
 
+						});
+						
+						btnSkip.addEventListener('click', function(e) {
+						camwindow.close();
 						});
 
 						vwAlert.add(lblMessage);
