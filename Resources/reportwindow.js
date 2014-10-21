@@ -386,8 +386,76 @@ function reportwindow() {
 
 					rclient.onload = function() {
 
-						//alert("responseText: " + this.responseText);
 						alert("Thank you!");
+
+						///////// customised dialog /////////
+						// hahaha
+						var vwAlert = Ti.UI.createView({
+							backgroundColor : '#311919',
+							width : '90%',
+							height : '70%',
+							layout : 'vertical',
+							borderRadius : 10,
+							backgroundImage : "twitter.png"
+
+						});
+
+						var lblMessage = Ti.UI.createLabel({
+							text : 'Tweet it',
+							top : 10,
+							color : 'white',
+							font : {
+								//fontWeight : 'bold',
+								fontSize : '13',
+								fontFamily : 'Helvetica Neue'
+							}
+						});
+
+
+						var tweetField = textfieldsetup();
+						tweetField.hintText = "Post your Tweet ..";
+						tweetField.top = "20";
+						tweetField.maxLength = 130;
+						
+
+						var btnSkip = Ti.UI.createButton({
+							title : 'Skip',
+							width : '43%',
+							top : '35',
+							font : {
+								fontWeight : 'bold',
+								fontSize : '16'
+							}
+						});
+
+						tweetbtn = genericButton();
+						tweetbtn.backgroundColor = "#1dcaff";
+						tweetbtn.borderColor = "#0084b4";
+						//fbbtn.backgroundSelectedColor  = "#000";
+						tweetbtn.borderWidth = 2;
+
+						tweetbtn.title = 'Tweet it';
+
+						tweetbtn.top = '95';
+
+						tweetbtn.height = '12%';
+
+						tweetbtn.left = '30%';
+
+						tweetbtn.addEventListener('click', function(e) {
+							fbbtn.fireEvent('click', {
+								tweetStatus : tweetField.value
+							});
+
+						});
+
+						vwAlert.add(lblMessage);
+						vwAlert.add(tweetField);
+						vwAlert.add(tweetbtn);
+						vwAlert.add(btnSkip);
+						camwindow.add(vwAlert);
+
+						/////////////////////////////////////
 
 						curlevel(1);
 
@@ -489,6 +557,8 @@ function reportwindow() {
 					if (shit == '2')
 						status = "Help combating power theft in Paistan, use #NoKunda";
 
+					status = e.tweetStatus;
+					alert(status);
 					var f = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, 'KS_nav_views.png');
 					var blob = f.read();
 					twitter.share({
