@@ -314,8 +314,7 @@ function reportwindow() {
 					details.hintText = "Please enter your location ";
 					var meterno1 = genericLabel();
 					meterno1.text = "Description: ";
-					
-					
+
 					meterno1.textAlign = Ti.UI.LEFT;
 					//meterno1.opacity = 0.25;
 					//meterno1.color = '#000',
@@ -387,38 +386,19 @@ function reportwindow() {
 
 					rclient.onload = function() {
 
-						alert("responseText: " + this.responseText);
+						//alert("responseText: " + this.responseText);
+						alert("Thank you!");
 
 						curlevel(1);
 
 					};
 
 					rclient.onsendstream = function(e) {
-						
+
 						var ee = parseInt((100 * (parseFloat(e.progress)) ));
 						displaydata.text = 'Upload: ' + parseInt((100 * (parseFloat(e.progress)) )) + '%';
 						if (ee == 100) {
-							//alert("Thank You ! Your report has been submitted.");
-
-							var dialog = Ti.UI.createAlertDialog({
-								message : 'Thank You ! Your report has been submitted.',
-								buttonNames : ['Ok'],
-								//ok : 'OK',
-								title : 'NoKunda',
-								androidView : Ti.UI.createImageView({
-									image : "/badge.png",
-									width : Ti.UI.SIZE,
-									height : Ti.UI.SIZE
-								})
-							}).show();
-
-							setTimeout(function() {
-								// request method here
-								camwindow.close();
-							}, 3000);
-							//camwindow.close();
 							myProgress.value = 0;
-
 						}
 						myProgress.value = ee;
 
@@ -632,8 +612,7 @@ function reportwindow() {
 
 				coordss.top = '1%';
 				coordss.backgroundColor = 'transparent';
-				
-				
+
 				lowerview.add(coordss);
 
 				if (Ti.Platform.osname == "android") {
@@ -899,6 +878,7 @@ function genericview() {
 	return myview;
 
 }
+
 ///// imageimage
 function makeimview() {
 
@@ -917,8 +897,8 @@ function makeimview() {
 		autorotate : true,
 
 		//top:'%',
-		borderColor:"#2D5875",
-		borderWidth:2,
+		borderColor : "#2D5875",
+		borderWidth : 2,
 		borderRadius : 12,
 
 		//top:'7%'
@@ -1082,10 +1062,9 @@ function textfieldsetup() {
 		height : '15%',
 
 		width : '100%',
-		
+
 		borderColor : "#2D5875",
-		borderWidth:1,
-		
+		borderWidth : 1,
 
 		//left : '3%',
 
