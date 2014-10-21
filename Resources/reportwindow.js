@@ -1,13 +1,7 @@
 var lat = 0;
 
 var longi = 0;
-//var back = Ti.Filesystem.getFile('tutorial.jpg');
 var social = require('social');
-
-//var twitter = social.create({
-//consumerSecret : Ti.App.Properties.getString('6yrqV6d1bkqOdgl6HDRWI6wJoVkLzNhmFVtCqDHH1zRO2TB6a6'),
-//consumerKey : Ti.App.Properties.getString('FNyx2KLV6XDa6g2J4igumpoeM')
-//});
 
 var twitter = social.create({
 	//site: 'Twitter', // <-- this example is for Twitter. I'll expand this to other sites in the future.
