@@ -580,7 +580,7 @@ function reportwindow() {
 
 				});
 
-				lowerview.add(fbbtn);
+				//lowerview.add(fbbtn);
 
 				var displaydata = genericLabel();
 				displaydata.backgroundColor = 'transparent';
