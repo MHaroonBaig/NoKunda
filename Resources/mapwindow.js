@@ -19,8 +19,8 @@ function mapwindow() {
 		region : {
 			latitude : 34.0167,
 			longitude : 71.5833,
-			latitudeDelta : 0.01,
-			longitudeDelta : 0.01
+			latitudeDelta : 0.5,
+			longitudeDelta : 0.5
 		},
 		animate : true,
 		width : Ti.UI.FILL,
@@ -33,7 +33,7 @@ function mapwindow() {
 	function fillMap() {
 		var annotationss = [];
 
-		var apiurl = "http://nokunda.labandroid.com/api?task=incidents&limit=10";
+		var apiurl = "http://nokunda.labandroid.com/api?task=incidents&limit=20";
 		var client = Ti.Network.createHTTPClient({
 			onload : function(e) {
 				//Ti.API.info("Received Report: " + this.responseText);
