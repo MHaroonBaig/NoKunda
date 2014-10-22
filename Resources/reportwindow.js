@@ -1095,17 +1095,13 @@ function genericLabel() {
 
 function textareasetup() {
 
-	var title = Ti.UI.createTextArea({//renamed TextField to TextArea for multi row field, may cause error on submission - test
+	var title = Ti.UI.createTextArea({
+		//renamed TextField to TextArea for multi row field, may cause error on submission - test
 
 		height : '27%',
 
 		width : '100%',
 
-		//left : '3%',
-
-		//right : '2%',
-
-		//top : '5%',
 
 		paddingLeft : 2, //pad text from borders..
 
@@ -1165,19 +1161,9 @@ function textfieldsetup() {
 		borderColor : "#2D5875",
 		borderWidth : 1,
 
-		//left : '3%',
-
-		//right : '2%',
-
-		//top : '5%',
 
 		paddingLeft : 2, //pad text from borders..
 
-		//paddingRight : 2,
-
-		//paddingTop : 2,
-
-		//paddingBottom : 2,
 
 		bubbleParent : false,
 
