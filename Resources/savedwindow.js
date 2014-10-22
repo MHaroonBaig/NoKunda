@@ -4,7 +4,7 @@ function savedwindow()
 		{ 
 			title: 'Saved Reports', 
 			backgroundColor: '#FFFFFF', 
-			barColor: '#3498db',
+			barColor: '#2079b4',
 			//fullscreen: true,
 			//navBarHidden: true 
 		});

@@ -57,7 +57,7 @@ function reportwindow() {
 		value : 2,
 		//style : Titanium.UI.iPhone.ProgressBarStyle.BAR,
 		borderWidth : 1,
-		borderRadius : 3,
+		borderRadius : 2,
 		borderColor : '#092436',
 
 	});
@@ -428,7 +428,12 @@ function reportwindow() {
 				submitbtn.left = '32%';
 
 				submitbtn.addEventListener('click', function(e) {
-					myProgress.show();
+					
+					if (details2.value.search("@") < 0) {
+						alert("Please Enter a valid E-mail address");
+						return;
+						
+					}
 
 					if (lat == 0 && longi == 0) {
 
@@ -443,6 +448,9 @@ function reportwindow() {
 						return;
 
 					}
+					
+					myProgress.show();
+					
 
 					submitbtn.enabled = false;
 

@@ -12,7 +12,7 @@ Create 3 tabs etc.
 var gaModule = require('Ti.Google.Analytics');
 var analytics = new gaModule('UA-55042156-1');
 var title = 'Saved rep 1';
-var title2= 'Second saved report, AFG Colony';
+var title2= 'Test Report';
 var listpic = 'thumbkunda.jpg';
 
 // The analytics object functions must be called on app.js otherwise it will loose it's context
@@ -101,6 +101,9 @@ else
 	});
 	
 	wintut.add(startbtn);
+	
+	
+	
 	wintut.open();
 
 }
