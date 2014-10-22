@@ -51,11 +51,11 @@ function reportwindow() {
 	var myProgress = Ti.UI.createProgressBar({
 		top : '5%',
 		width : '100%',
-		height : 20,
+		height : 5,
 		min : 0,
 		max : 100,
 		value : 2,
-		style : Titanium.UI.iPhone.ProgressBarStyle.BAR,
+		//style : Titanium.UI.iPhone.ProgressBarStyle.BAR,
 		borderWidth : 1,
 		borderRadius : 3,
 		borderColor : '#092436',
@@ -145,6 +145,61 @@ function reportwindow() {
 		image : 'info.jpg'
 	});
 
+	///////////// about page //////////////
+	//////////////////////////////////////
+	
+	about.addEventListener("click", function(e) {
+
+	var wintut = Titanium.UI.createWindow({
+		//title:"Camera Preview",
+		backgroundColor : '#2079b4',
+		navBarHidden : true,
+		exitOnClose : true
+	});
+
+	var tut = Ti.Filesystem.getFile('tutorial.jpg');
+
+	var imviewtutorial = Ti.UI.createImageView({
+		image : tut,
+		width : '100%',
+		height : '85%',
+		top : '0%'
+	});
+	wintut.add(imviewtutorial);
+
+	var startbtn = Titanium.UI.createButton({
+		title : "START REPORTING",
+		width : '100%',
+		height : '15%',
+		top : '85%',
+		font : {
+			fontSize : 14,
+			fontWeight : 'bold',
+			fontFamily : 'Helvetica Neue'
+		},
+		backgroundColor : '#3498db'
+	});
+
+	startbtn.addEventListener("click", function(e) {
+		var wintabs = require('tabs')();
+		/*var tabswin = Ti.UI.createWindow(
+		 {
+		 url: "tabs.js",
+		 //title:'NoKunda Getting GPS!',
+		 //backgroundColor:'#191919'
+		 });
+		 tabswin.open();
+		 */
+	});
+	
+	var t4 = Ti.UI.iPhone.AnimationStyle.CURL_DOWN;
+
+	wintut.add(startbtn);
+	wintut.open({transition: t4});
+});
+	//////////////////////////////////////
+	//////////////////////////////////////
+
 	rwindow.add(about);
 	//need to add a listener and make it darker
 
@@ -161,6 +216,7 @@ function reportwindow() {
 	/////////////////////////////////////////////////
 
 	btn.addEventListener('click', function(e) {
+		rwindow.close();
 
 		//camwindow = createwindows(rwindow.width, rwindow.height);
 		var shit;
@@ -214,11 +270,12 @@ function reportwindow() {
 
 				// Added opening animation
 
-				var t = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
+				//var t = Ti.UI.iPhone.AnimationStyle.CURL_UP;
 
-				camwindow.open({
-					transition : t
-				});
+				//camwindow.open({
+					//transition : t
+				//});
+				camwindow.open();
 
 				topview = genericview();
 
@@ -259,25 +316,25 @@ function reportwindow() {
 				retakebtn.addEventListener('click', function(e) {
 
 					if (shit == '1') {
-						var t2 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
+						//var t2 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
 
-						camwindow.close({
-							transition : t2
-						});
+						//camwindow.close({
+							//transition : t2
+						//});
+						//camwindow.close();
 						btn.fireEvent('click');
-					} else
-					{
-						var t3 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
+					} else {
+						//var t3 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
 
-						camwindow.close({
-							transition : t3
-						});
-						
+						//camwindow.close({
+							//transition : t3
+						//});
+						//camwindow.close();
 						btn.fireEvent('click', {
 							name : '2'
-						}); 
-						
-						}
+						});
+
+					}
 
 				});
 

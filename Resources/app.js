@@ -57,7 +57,7 @@ else
 		
 	var wintut = Titanium.UI.createWindow({
 		//title:"Camera Preview",
-		backgroundColor:'#FFFFFF',
+		backgroundColor:'#2079b4',
 		navBarHidden: true,
 		exitOnClose: true
 	});
