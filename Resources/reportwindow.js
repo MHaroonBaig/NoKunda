@@ -51,11 +51,15 @@ function reportwindow() {
 	var myProgress = Ti.UI.createProgressBar({
 		top : '5%',
 		width : '100%',
-		height : 4,
+		height : 10,
 		min : 0,
 		max : 100,
 		value : 2,
-		style : Titanium.UI.iPhone.ProgressBarStyle.PLAIN
+		style : Titanium.UI.iPhone.ProgressBarStyle.PLAIN,
+		borderWidth:3,
+		borderRadius:7,
+		borderColor: '#092436',
+		
 	});
 
 	//rwindow.add(myProgress);
@@ -347,6 +351,7 @@ function reportwindow() {
 				submitbtn.left = '32%';
 
 				submitbtn.addEventListener('click', function(e) {
+					myProgress.show();
 
 					if (lat == 0 && longi == 0) {
 
@@ -593,7 +598,7 @@ function reportwindow() {
 
 				lowerview.add(displaydata);
 				lowerview.add(myProgress);
-				myProgress.show();
+				//myProgress.show();
 
 				var coordss = genericLabel();
 
