@@ -434,19 +434,13 @@ function reportwindow() {
 
 					// Email filtering
 					if (details2.value.search("@") < 0) {
-						
-						emailTest += 1;
-						
-						if (emailTest < 3){
-						alert("Please Enter a valid E-mail address");	
-							return;
-							
-						}
-						
-						
-						
-						
 
+						emailTest += 1;
+
+						if (emailTest < 3) {
+							alert("Please Enter a valid E-mail address");
+							return;
+						}
 					}
 					myProgress.show();
 
@@ -463,8 +457,6 @@ function reportwindow() {
 						return;
 
 					}
-
-					
 
 					submitbtn.enabled = false;
 
