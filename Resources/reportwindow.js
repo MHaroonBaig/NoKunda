@@ -137,11 +137,11 @@ function reportwindow() {
 	/////////////////////////
 
 	var about = Ti.UI.createImageView({
-		height : '7%',
+		height : '8%',
 		//width : '100%',
 		//top : 0,
 		left : '85%',
-		bottom : "1%",
+		bottom : "3%",
 		image : 'info.jpg'
 	});
 
@@ -463,6 +463,7 @@ function reportwindow() {
 					rclient.onload = function() {
 
 						alert("Thank you!");
+						alert (this.responseText);
 
 						///////// customised dialog /////////
 						// hahaha
@@ -612,7 +613,7 @@ function reportwindow() {
 
 						"incident_photo[]" : img,
 
-						person_email : details2.text,
+						person_email : details2.value,
 
 						incident_category : shit,
 

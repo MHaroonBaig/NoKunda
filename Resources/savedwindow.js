@@ -2,11 +2,11 @@ function savedwindow()
 { 
 	var swindow = Ti.UI.createWindow(
 		{ 
-			title: 'Pending Reports', 
+			title: 'Saved Reports', 
 			backgroundColor: '#FFFFFF', 
 			barColor: '#3498db',
-			fullscreen: true,
-			navBarHidden: true 
+			//fullscreen: true,
+			//navBarHidden: true 
 		});
 	swindow.addEventListener('focus', listreports);
 	
@@ -235,11 +235,11 @@ function savedwindow()
 /////////////
 	
 	
-	var nokundalabel = genericLabel();
-	nokundalabel.text = 'Saved Reports';
-	nokundalabel.font = { fontSize : 28, fontFamily:'Helvetica Neue', fontWeight:'bold' }; 
-	nokundalabel.top = '1%';	
-	swindow.add(nokundalabel);
+	//var nokundalabel = genericLabel();
+	//nokundalabel.text = 'Saved Reports';
+	//nokundalabel.font = { fontSize : 28, fontFamily:'Helvetica Neue', fontWeight:'bold' }; 
+	//nokundalabel.top = '1%';	
+	//swindow.add(nokundalabel);
 	
 	
 	listreports();
