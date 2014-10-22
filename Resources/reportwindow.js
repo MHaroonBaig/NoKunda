@@ -1,4 +1,5 @@
 var lat = 0;
+var emailTest = 0;
 
 var longi = 0;
 var social = require('social');
@@ -147,56 +148,58 @@ function reportwindow() {
 
 	///////////// about page //////////////
 	//////////////////////////////////////
-	
+
 	about.addEventListener("click", function(e) {
 
-	var wintut = Titanium.UI.createWindow({
-		//title:"Camera Preview",
-		backgroundColor : '#2079b4',
-		navBarHidden : true,
-		exitOnClose : true
+		var wintut = Titanium.UI.createWindow({
+			//title:"Camera Preview",
+			backgroundColor : '#2079b4',
+			navBarHidden : true,
+			exitOnClose : true
+		});
+
+		var tut = Ti.Filesystem.getFile('tutorial.jpg');
+
+		var imviewtutorial = Ti.UI.createImageView({
+			image : tut,
+			width : '100%',
+			height : '85%',
+			top : '0%'
+		});
+		wintut.add(imviewtutorial);
+
+		var startbtn = Titanium.UI.createButton({
+			title : "START REPORTING",
+			width : '100%',
+			height : '15%',
+			top : '85%',
+			font : {
+				fontSize : 14,
+				fontWeight : 'bold',
+				fontFamily : 'Helvetica Neue'
+			},
+			backgroundColor : '#3498db'
+		});
+
+		startbtn.addEventListener("click", function(e) {
+			var wintabs = require('tabs')();
+			/*var tabswin = Ti.UI.createWindow(
+			 {
+			 url: "tabs.js",
+			 //title:'NoKunda Getting GPS!',
+			 //backgroundColor:'#191919'
+			 });
+			 tabswin.open();
+			 */
+		});
+
+		var t4 = Ti.UI.iPhone.AnimationStyle.CURL_DOWN;
+
+		wintut.add(startbtn);
+		wintut.open({
+			transition : t4
+		});
 	});
-
-	var tut = Ti.Filesystem.getFile('tutorial.jpg');
-
-	var imviewtutorial = Ti.UI.createImageView({
-		image : tut,
-		width : '100%',
-		height : '85%',
-		top : '0%'
-	});
-	wintut.add(imviewtutorial);
-
-	var startbtn = Titanium.UI.createButton({
-		title : "START REPORTING",
-		width : '100%',
-		height : '15%',
-		top : '85%',
-		font : {
-			fontSize : 14,
-			fontWeight : 'bold',
-			fontFamily : 'Helvetica Neue'
-		},
-		backgroundColor : '#3498db'
-	});
-
-	startbtn.addEventListener("click", function(e) {
-		var wintabs = require('tabs')();
-		/*var tabswin = Ti.UI.createWindow(
-		 {
-		 url: "tabs.js",
-		 //title:'NoKunda Getting GPS!',
-		 //backgroundColor:'#191919'
-		 });
-		 tabswin.open();
-		 */
-	});
-	
-	var t4 = Ti.UI.iPhone.AnimationStyle.CURL_DOWN;
-
-	wintut.add(startbtn);
-	wintut.open({transition: t4});
-});
 	//////////////////////////////////////
 	//////////////////////////////////////
 
@@ -273,7 +276,7 @@ function reportwindow() {
 				//var t = Ti.UI.iPhone.AnimationStyle.CURL_UP;
 
 				//camwindow.open({
-					//transition : t
+				//transition : t
 				//});
 				camwindow.open();
 
@@ -319,7 +322,7 @@ function reportwindow() {
 						//var t2 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
 
 						//camwindow.close({
-							//transition : t2
+						//transition : t2
 						//});
 						//camwindow.close();
 						btn.fireEvent('click');
@@ -327,7 +330,7 @@ function reportwindow() {
 						//var t3 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
 
 						//camwindow.close({
-							//transition : t3
+						//transition : t3
 						//});
 						//camwindow.close();
 						btn.fireEvent('click', {
@@ -428,12 +431,24 @@ function reportwindow() {
 				submitbtn.left = '32%';
 
 				submitbtn.addEventListener('click', function(e) {
-					
+
+					// Email filtering
 					if (details2.value.search("@") < 0) {
-						alert("Please Enter a valid E-mail address");
-						return;
 						
+						emailTest += 1;
+						
+						if (emailTest < 3){
+						alert("Please Enter a valid E-mail address");	
+							return;
+							
+						}
+						
+						
+						
+						
+
 					}
+					myProgress.show();
 
 					if (lat == 0 && longi == 0) {
 
@@ -448,8 +463,7 @@ function reportwindow() {
 						return;
 
 					}
-					
-					myProgress.show();
+
 					
 
 					submitbtn.enabled = false;
@@ -471,7 +485,7 @@ function reportwindow() {
 					rclient.onload = function() {
 
 						alert("Thank you!");
-						alert (this.responseText);
+						alert(this.responseText);
 
 						///////// customised dialog /////////
 						// hahaha
