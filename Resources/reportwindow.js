@@ -56,10 +56,10 @@ function reportwindow() {
 		max : 100,
 		value : 2,
 		style : Titanium.UI.iPhone.ProgressBarStyle.PLAIN,
-		borderWidth:3,
-		borderRadius:7,
-		borderColor: '#092436',
-		
+		borderWidth : 3,
+		borderRadius : 7,
+		borderColor : '#092436',
+
 	});
 
 	//rwindow.add(myProgress);
@@ -212,7 +212,13 @@ function reportwindow() {
 
 				Ti.API.info('PICsize: ' + img.height + " x " + img.width);
 
-				camwindow.open();
+				// Added opening animation
+
+				var t = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
+
+				camwindow.open({
+					transition : t
+				});
 
 				topview = genericview();
 
@@ -252,12 +258,26 @@ function reportwindow() {
 
 				retakebtn.addEventListener('click', function(e) {
 
-					if (shit == '1')
+					if (shit == '1') {
+						var t2 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
+
+						camwindow.close({
+							transition : t2
+						});
 						btn.fireEvent('click');
-					else
+					} else
+					{
+						var t3 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
+
+						camwindow.close({
+							transition : t3
+						});
+						
 						btn.fireEvent('click', {
 							name : '2'
-						});
+						}); 
+						
+						}
 
 				});
 
@@ -396,8 +416,8 @@ function reportwindow() {
 							layout : 'vertical',
 							borderRadius : 10,
 							backgroundImage : "twitter.png",
-							borderColor: "#092436",
-							borderWidth:2
+							borderColor : "#092436",
+							borderWidth : 2
 
 						});
 
@@ -452,8 +472,14 @@ function reportwindow() {
 
 						});
 
+						// btn-skip animation
+
 						btnSkip.addEventListener('click', function(e) {
-							camwindow.close();
+							var t1 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
+
+							camwindow.close({
+								transition : t1
+							});
 						});
 
 						vwAlert.add(lblMessage);
