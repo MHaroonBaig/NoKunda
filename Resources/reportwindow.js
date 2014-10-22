@@ -390,7 +390,9 @@ function reportwindow() {
 							height : '70%',
 							layout : 'vertical',
 							borderRadius : 10,
-							backgroundImage : "twitter.png"
+							backgroundImage : "twitter.png",
+							borderColor: "#092436",
+							borderWidth:2
 
 						});
 
