@@ -19,7 +19,7 @@ function reportwindow() {
 
 		title : 'Report!',
 
-		backgroundColor : '#FFFFFF',
+		backgroundColor : '#2079b4',
 
 		barColor : '#3498db',
 
@@ -51,13 +51,13 @@ function reportwindow() {
 	var myProgress = Ti.UI.createProgressBar({
 		top : '5%',
 		width : '100%',
-		height : 10,
+		height : 20,
 		min : 0,
 		max : 100,
 		value : 2,
-		style : Titanium.UI.iPhone.ProgressBarStyle.PLAIN,
-		borderWidth : 3,
-		borderRadius : 7,
+		style : Titanium.UI.iPhone.ProgressBarStyle.BAR,
+		borderWidth : 1,
+		borderRadius : 3,
 		borderColor : '#092436',
 
 	});
@@ -820,7 +820,7 @@ function createwindows() {
 
 		title : 'Submitting Report',
 
-		backgroundColor : '#FFFFFF',
+		backgroundColor : '#2079b4',
 		barColor : "#2079b4",
 
 		//width: rwidth,
