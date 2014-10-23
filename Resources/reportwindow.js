@@ -474,12 +474,12 @@ function reportwindow() {
 						}
 						emailTest = 0;
 					}
-					myProgress.show();
+
 					//alert(details.value);
 
 					if (lat == 0 && longi == 0) {
 
-						displaydata.text = 'Wait for coordinates! Cant submit yet!';
+						//displaydata.text = 'Wait for coordinates! Cant submit yet!';
 
 						return;
 
@@ -490,6 +490,14 @@ function reportwindow() {
 						return;
 
 					}
+
+					myProgress.show();
+					details.backgroundColor = "#CDCDCD";
+					details2.backgroundColor = "#CDCDCD";
+					details.backgroundDisabledColor = "#CDCDCD";
+					details2.backgroundDisabledColor = "#CDCDCD";
+					details.editable = false;
+					details2.editable = false;
 
 					submitbtn.enabled = false;
 
@@ -608,7 +616,7 @@ function reportwindow() {
 					rclient.onsendstream = function(e) {
 
 						var ee = parseInt((100 * (parseFloat(e.progress)) ));
-						displaydata.text = 'Upload: ' + parseInt((100 * (parseFloat(e.progress)) )) + '%';
+						displaydata.text = 'Uploading: ' + parseInt((100 * (parseFloat(e.progress)) )) + '%';
 						if (ee == 100) {
 							myProgress.value = 0;
 						}
@@ -617,7 +625,8 @@ function reportwindow() {
 					};
 
 					rclient.onerror = function(e) {
-
+						
+						Ti.Database.install('mydb.db', 'mydb');
 						var db = Ti.Database.open("mydb");
 
 						alert("There seems to be an error. Report saved.");
@@ -830,7 +839,7 @@ function reportwindow() {
 
 					if (!e.success || e.error) {
 
-						coordss.text = 'Coordinates N/A right now... wait?';
+						coordss.text = 'Fetching the Locations. Please wait.';
 
 						//alert('error ' + JSON.stringify(e.error));
 
@@ -842,8 +851,8 @@ function reportwindow() {
 
 					}
 
-					coordss.text = 'Lat: ' + e.coords.latitude + ' Long: ' + e.coords.longitude;
-
+					//coordss.text = 'Lat: ' + e.coords.latitude + ' Long: ' + e.coords.longitude;
+					coords.text = "Location Fetched";
 					lat = e.coords.latitude;
 
 					longi = e.coords.longitude;
@@ -1223,7 +1232,7 @@ function textfieldsetup() {
 
 		font : {
 
-			fontSize : 13,
+			fontSize : 15,
 
 			fontFamily : 'Helvetica Neue'
 
