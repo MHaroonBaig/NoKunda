@@ -319,6 +319,7 @@ function reportwindow() {
 				////// Retake Logic ////
 
 				retakebtn.addEventListener('click', function(e) {
+					emailTest = 0;
 					try {
 						rclient.abort();
 					} catch (error) {
@@ -612,6 +613,8 @@ function reportwindow() {
 						//curlevel(1);
 
 					};
+					
+					rclient.timeout = 18000;
 
 					rclient.onsendstream = function(e) {
 
@@ -640,6 +643,8 @@ function reportwindow() {
 						camwindow.close();
 
 					};
+					
+					
 
 					if (shit == '2') {
 						shit2 = 'Meter No: ';
