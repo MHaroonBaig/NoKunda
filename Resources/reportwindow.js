@@ -665,6 +665,7 @@ function reportwindow() {
 						status = "Help combating power theft in Paistan, use #NoKunda";
 
 					status = e.tweetStatus;
+					status += " \n #NoKunda";
 					//alert(status);
 					var f = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, 'KS_nav_views.png');
 					var blob = f.read();
@@ -673,9 +674,11 @@ function reportwindow() {
 						image : blob,
 						success : function() {
 							//alert('Tweeted!');
+							btnSkip.fireEvent('click');
 						},
 						error : function(error) {
 							//alert('Oh no! ' + error);
+							btnSkip.fireEvent('click');
 						}
 					});
 
