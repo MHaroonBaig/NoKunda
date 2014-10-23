@@ -23,8 +23,8 @@ function savedwindow()
 	            {             // Sets the ImageView.image property
 	            	image: 'KS_nav_ui.png',
 	            	left: '6dp',
-	            	height: '50dp',
-	            	width: '45dp'
+	            	height: '40dp',
+	            	width: '50dp'
 	            }
 	            ,
 	            events: { click : upload }  // Binds a callback to the button's click event
@@ -122,7 +122,7 @@ function savedwindow()
 		
 		rclient.onerror = function(e) 
 		{
-			alert('Failed to Upload! :/');
+			alert('Failed to Upload');
 		};
 		
     	
@@ -155,7 +155,7 @@ function savedwindow()
 	    templates: { 'myTemplate': myTemplate },         // Mapping myTemplate object to the 'myTemplate' style name
 	    defaultItemTemplate: 'myTemplate',   			 // Making it default list template for all rows/dataitems
 		backgroundColor: '#FFFFFF',
-		top:'10%',
+		top:'1%',
 	 //   headerTitle: "Reports to Upload",     //causes dexer fail
 	});
 	
