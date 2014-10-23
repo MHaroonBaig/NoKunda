@@ -1,5 +1,6 @@
 var lat = 0;
 var emailTest = 0;
+var retakeTest = 0;
 
 var longi = 0;
 var social = require('social');
@@ -317,14 +318,22 @@ function reportwindow() {
 				////// Retake Logic ////
 
 				retakebtn.addEventListener('click', function(e) {
-
+					// haroon
 					if (shit == '1') {
 						//var t2 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
 
 						//camwindow.close({
 						//transition : t2
 						//});
-						//camwindow.close();
+
+						//if (retakeTest > 0) {
+
+							//camwindow.close();
+							//retakeTest = 0;
+						//}
+
+						//retakeTest += 1;
+						camwindow.close();
 						btn.fireEvent('click');
 					} else {
 						//var t3 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
@@ -332,7 +341,15 @@ function reportwindow() {
 						//camwindow.close({
 						//transition : t3
 						//});
-						//camwindow.close();
+						//if (retakeTest > 0) {
+
+							//camwindow.close();
+							//retakeTest = 0;
+						//}
+
+						//retakeTest += 1;
+						camwindow.close();
+							
 						btn.fireEvent('click', {
 							name : '2'
 						});
@@ -564,7 +581,7 @@ function reportwindow() {
 
 						/////////////////////////////////////
 
-						curlevel(1);
+						//curlevel(1);
 
 					};
 
