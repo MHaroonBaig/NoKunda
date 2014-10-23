@@ -439,7 +439,7 @@ function reportwindow() {
 
 						if (emailTest < 3) {
 							alert("Please Enter a valid E-mail address");
-							details.value = "abc@example.com";
+							details2.value = "abc@example.com";
 							return;
 						}
 					}
@@ -674,11 +674,21 @@ function reportwindow() {
 						image : blob,
 						success : function() {
 							//alert('Tweeted!');
-							btnSkip.fireEvent('click');
+							//btnSkip.fireEvent('click');
+							var tt = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
+
+							camwindow.close({
+								transition : tt
+							});
 						},
 						error : function(error) {
 							//alert('Oh no! ' + error);
-							btnSkip.fireEvent('click');
+							//btnSkip.fireEvent('click');
+							var tt1 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
+
+							camwindow.close({
+								transition : tt1
+							});
 						}
 					});
 
