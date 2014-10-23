@@ -56,7 +56,7 @@ function reportwindow() {
 		height : 5,
 		min : 0,
 		max : 100,
-		value : 2,
+		value : 0,
 		//style : Titanium.UI.iPhone.ProgressBarStyle.BAR,
 		borderWidth : 1,
 		borderRadius : 1,
@@ -221,6 +221,7 @@ function reportwindow() {
 
 	btn.addEventListener('click', function(e) {
 		rwindow.close();
+		myProgress.value = 0;
 
 		//camwindow = createwindows(rwindow.width, rwindow.height);
 		var shit;
@@ -318,6 +319,11 @@ function reportwindow() {
 				////// Retake Logic ////
 
 				retakebtn.addEventListener('click', function(e) {
+					try {
+						rclient.abort();
+					} catch (error) {
+
+					}
 					// haroon
 					if (shit == '1') {
 						//var t2 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
@@ -328,13 +334,13 @@ function reportwindow() {
 
 						//if (retakeTest > 0) {
 
-							//camwindow.close();
-							//retakeTest = 0;
+						//camwindow.close();
+						//retakeTest = 0;
 						//}
 
 						//retakeTest += 1;
 						camwindow.close();
-						btn.fireEvent('click');
+						//btn.fireEvent('click');
 					} else {
 						//var t3 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
 
@@ -343,16 +349,18 @@ function reportwindow() {
 						//});
 						//if (retakeTest > 0) {
 
-							//camwindow.close();
-							//retakeTest = 0;
+						//camwindow.close();
+						//retakeTest = 0;
 						//}
 
 						//retakeTest += 1;
-						camwindow.close();
-							
-						btn.fireEvent('click', {
-							name : '2'
+						camwindow.close({
+							animated : true
 						});
+
+						//btn.fireEvent('click', {
+						//name : '2'
+						//});
 
 					}
 
@@ -455,10 +463,16 @@ function reportwindow() {
 						emailTest += 1;
 
 						if (emailTest < 3) {
-							alert("Please Enter a valid E-mail address");
+
+							var emailError = Titanium.UI.createAlertDialog({
+								title : 'Invalid Email',
+								message : 'Please enter a valid Email address'
+							});
+							emailError.show();
 							details2.value = "abc@example.com";
 							return;
 						}
+						emailTest = 0;
 					}
 					myProgress.show();
 					//alert(details.value);
@@ -495,9 +509,13 @@ function reportwindow() {
 
 					rclient.onload = function() {
 
-						//alert("Thank you!");
+						//alert("Thank you. Your report has been uploaded.");
 						//alert(this.responseText);
-
+						var thankYou = Titanium.UI.createAlertDialog({
+							title : 'Thank You',
+							message : 'Your report has been uploaded'
+						});
+						thankYou.show();
 						///////// customised dialog /////////
 						// hahaha
 						var vwAlert = Ti.UI.createView({
@@ -577,6 +595,8 @@ function reportwindow() {
 						vwAlert.add(tweetField);
 						vwAlert.add(tweetbtn);
 						vwAlert.add(btnSkip);
+						camwindow.navBarHidden = true;
+						camwindow.fullscreen = true;
 						camwindow.add(vwAlert);
 
 						/////////////////////////////////////
