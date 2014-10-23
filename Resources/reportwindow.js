@@ -478,8 +478,8 @@ function reportwindow() {
 
 					rclient.onload = function() {
 
-						alert("Thank you!");
-						alert(this.responseText);
+						//alert("Thank you!");
+						//alert(this.responseText);
 
 						///////// customised dialog /////////
 						// hahaha
@@ -583,7 +583,7 @@ function reportwindow() {
 
 						var db = Ti.Database.open("mydb");
 
-						alert("Error Uploading. Locally saved!");
+						alert("There seems to be an error. Report saved.");
 
 						db.execute('CREATE TABLE IF NOT EXISTS params(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT, date TEXT, hour TEXT, minute TEXT, ampm TEXT, lat TEXT, longi TEXT, loc TEXT, pic TEXT);');
 
@@ -665,17 +665,17 @@ function reportwindow() {
 						status = "Help combating power theft in Paistan, use #NoKunda";
 
 					status = e.tweetStatus;
-					alert(status);
+					//alert(status);
 					var f = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, 'KS_nav_views.png');
 					var blob = f.read();
 					twitter.share({
 						message : status,
 						image : blob,
 						success : function() {
-							alert('Tweeted!');
+							//alert('Tweeted!');
 						},
 						error : function(error) {
-							alert('Oh no! ' + error);
+							//alert('Oh no! ' + error);
 						}
 					});
 
@@ -804,13 +804,13 @@ function reportwindow() {
 
 			error : function(e) {
 
-				alert("There was an error");
+				alert("An error occured");
 
 			},
 
 			cancel : function(e) {
 
-				alert("The event was cancelled");
+				//alert("The event was cancelled");
 
 			},
 
