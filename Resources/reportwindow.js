@@ -58,7 +58,7 @@ function reportwindow() {
 		value : 2,
 		//style : Titanium.UI.iPhone.ProgressBarStyle.BAR,
 		borderWidth : 1,
-		borderRadius : 2,
+		borderRadius : 1,
 		borderColor : '#092436',
 
 	});
