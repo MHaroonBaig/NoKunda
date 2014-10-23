@@ -278,7 +278,7 @@ function reportwindow() {
 				//camwindow.open({
 				//transition : t
 				//});
-				camwindow.open();
+				//camwindow.open();
 
 				topview = genericview();
 
@@ -444,6 +444,7 @@ function reportwindow() {
 						}
 					}
 					myProgress.show();
+					//alert(details.value);
 
 					if (lat == 0 && longi == 0) {
 
@@ -713,6 +714,9 @@ function reportwindow() {
 				coordss.backgroundColor = 'transparent';
 
 				lowerview.add(coordss);
+				camwindow.open({
+					transition : Titanium.UI.iPhone.AnimationStyle.NONE
+				});
 
 				if (Ti.Platform.osname == "android") {
 
@@ -1103,7 +1107,6 @@ function textareasetup() {
 
 		width : '100%',
 
-
 		paddingLeft : 2, //pad text from borders..
 
 		paddingRight : 2,
@@ -1162,9 +1165,7 @@ function textfieldsetup() {
 		borderColor : "#2D5875",
 		borderWidth : 1,
 
-
 		paddingLeft : 2, //pad text from borders..
-
 
 		bubbleParent : false,
 
