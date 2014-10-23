@@ -34,7 +34,7 @@ function tabs()
 	tabs.addTab(tabsavedreports);
 	tabs.addTab(tabmap);
 	
-	tabs.open();
+	tabs.open({transition:Titanium.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT});
 	return tabs;
 
 };

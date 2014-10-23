@@ -439,6 +439,7 @@ function reportwindow() {
 
 						if (emailTest < 3) {
 							alert("Please Enter a valid E-mail address");
+							details.value = "abc@example.com";
 							return;
 						}
 					}
