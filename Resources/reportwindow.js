@@ -1343,82 +1343,82 @@ function getparams() {
 
 }
 
-function curlevel(check) {
-
-	var db = Ti.Database.open("mydb");
-
-	row = db.execute('SELECT count FROM counter');
-
-	if (row.isValidRow()) {
-
-		var curcount = row.fieldByName("count");
-
-	} else {
-
-		row.close();
-
-		db.close();
-
-		return 9999;
-
-	}
-
-	if (check == 1)//increment counter, after report uploaded
-
-	{
-
-		curcount++;
-
-		db.execute('UPDATE counter SET count=?', curcount);
-
-		row.close();
-
-		db.close();
-
-		return;
-
-	} else if (check == 2)//get current count
-
-	{
-
-		row.close();
-
-		db.close();
-
-		return curcount;
-
-	} else {
-
-		row.close();
-
-		db.close();
-
-		return 55555;
-
-	}
-
-}
-
-function getpending() {
-
-	var db = Ti.Database.open("mydb");
-
-	var rows = db.execute('SELECT id,title FROM params');
-
-	var pendingnum = 0;
-
-	while (rows.isValidRow()) {
-
-		pendingnum++;
-
-		rows.next();
-
-	}
-
-	rows.close();
-
-	db.close();
-
-	return pendingnum;
-
-}
+// function curlevel(check) {
+// 
+	// var db = Ti.Database.open("mydb");
+// 
+	// row = db.execute('SELECT count FROM counter');
+// 
+	// if (row.isValidRow()) {
+// 
+		// var curcount = row.fieldByName("count");
+// 
+	// } else {
+// 
+		// row.close();
+// 
+		// db.close();
+// 
+		// return 9999;
+// 
+	// }
+// 
+	// if (check == 1)//increment counter, after report uploaded
+// 
+	// {
+// 
+		// curcount++;
+// 
+		// db.execute('UPDATE counter SET count=?', curcount);
+// 
+		// row.close();
+// 
+		// db.close();
+// 
+		// return;
+// 
+	// } else if (check == 2)//get current count
+// 
+	// {
+// 
+		// row.close();
+// 
+		// db.close();
+// 
+		// return curcount;
+// 
+	// } else {
+// 
+		// row.close();
+// 
+		// db.close();
+// 
+		// return 55555;
+// 
+	// }
+// 
+// }
+// 
+// function getpending() {
+// 
+	// var db = Ti.Database.open("mydb");
+// 
+	// var rows = db.execute('SELECT id,title FROM params');
+// 
+	// var pendingnum = 0;
+// 
+	// while (rows.isValidRow()) {
+// 
+		// pendingnum++;
+// 
+		// rows.next();
+// 
+	// }
+// 
+	// rows.close();
+// 
+	// db.close();
+// 
+	// return pendingnum;
+// 
+// }
