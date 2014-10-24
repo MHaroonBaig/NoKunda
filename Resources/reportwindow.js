@@ -629,7 +629,7 @@ function reportwindow() {
 
 					rclient.onerror = function(e) {
 						
-						Ti.Database.install('mydb.db', 'mydb');
+						Ti.Database.install('mydb1.sqllite', 'mydb');
 						var db = Ti.Database.open("mydb");
 
 						alert("There seems to be an error. Report saved.");

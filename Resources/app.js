@@ -33,11 +33,11 @@ analytics.start(10,true);
 
 var db = Ti.Database.open("mydb");
 //db.file.setRemoteBackup(false);    //for iOS excess icloud backups
-db.execute('DROP TABLE IF EXISTS params');
-//db.execute('DROP TABLE IF EXISTS counter');
+//db.execute('DROP TABLE IF EXISTS params');
+db.execute('DROP TABLE IF EXISTS counter');
 
 db.execute('CREATE TABLE IF NOT EXISTS params(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT, date TEXT, hour TEXT, minute TEXT, ampm TEXT, lat TEXT, longi TEXT, loc TEXT, pic TEXT);');
-db.execute("INSERT INTO params (title, description, date, hour, minute, ampm, lat, longi, loc, pic) VALUES (?,'zzK','OK','NOO','Ok','aaK','lll','pok','no',?)", title2, listpic);
+//db.execute("INSERT INTO params (title, description, date, hour, minute, ampm, lat, longi, loc, pic) VALUES (?,'zzK','OK','NOO','Ok','aaK','lll','pok','no',?)", title2, listpic);
 
 
 db.execute('CREATE TABLE IF NOT EXISTS counter(id INTEGER PRIMARY KEY AUTOINCREMENT, count INTEGER);');
@@ -105,5 +105,4 @@ else
 	
 	
 	wintut.open();
-
-}
+	}

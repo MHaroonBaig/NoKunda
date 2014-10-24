@@ -163,13 +163,14 @@ function savedwindow()
 	function listreports()
 	{
 		var db = Ti.Database.open("mydb");
-		var rows = db.execute('SELECT id, title, description, date, hour, minute, ampm, lat, longi, loc, pic FROM params');
-		//var rows = db.execute('SELECT * FROM params');
+		//var rows = db.execute('SELECT id, title, description, date, hour, minute, ampm, lat, longi, loc, pic FROM params');
+		var rows = db.execute('SELECT * FROM params');
+		
 		data = [];
 		
 		while ( rows.isValidRow() ) 
 		{
-			
+			//alert(data);
 			data.push(
 			{
 				id: rows.fieldByName('id'),
