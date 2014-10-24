@@ -857,7 +857,7 @@ function reportwindow() {
 					}
 
 					//coordss.text = 'Lat: ' + e.coords.latitude + ' Long: ' + e.coords.longitude;
-					coords.text = "Location Fetched";
+					coordss.text = "Location Fetched";
 					lat = e.coords.latitude;
 
 					longi = e.coords.longitude;
