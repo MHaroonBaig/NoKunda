@@ -238,6 +238,8 @@ function reportwindow() {
 		var camwindow = createwindows();
 
 		Titanium.Media.showCamera({
+			
+			showControls : false,
 
 			success : function(e) {
 

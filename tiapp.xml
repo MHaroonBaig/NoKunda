@@ -83,7 +83,7 @@
     </modules>
     <deployment-targets>
         <target device="iphone">true</target>
-        <target device="ipad">true</target>
+        <target device="ipad">false</target>
         <target device="android">false</target>
         <target device="blackberry">false</target>
         <target device="mobileweb">false</target>
