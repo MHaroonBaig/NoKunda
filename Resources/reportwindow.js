@@ -1,6 +1,6 @@
 var lat = 0;
-var emailTest = 0;
 var retakeTest = 0;
+var emailTest = 0;
 
 var longi = 0;
 var social = require('social');
@@ -221,6 +221,7 @@ function reportwindow() {
 
 	btn.addEventListener('click', function(e) {
 		rwindow.close();
+		emailTest = 0;
 		myProgress.value = 0;
 
 		//camwindow = createwindows(rwindow.width, rwindow.height);
@@ -327,45 +328,48 @@ function reportwindow() {
 					} catch (error) {
 
 					}
+					camwindow.close();
+					
+					
 					// haroon
-					if (shit == '1') {
-						//var t2 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
-
-						//camwindow.close({
-						//transition : t2
-						//});
-
-						//if (retakeTest > 0) {
-
-						//camwindow.close();
-						//retakeTest = 0;
-						//}
-
-						//retakeTest += 1;
-						camwindow.close();
-						//btn.fireEvent('click');
-					} else {
-						//var t3 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
-
-						//camwindow.close({
-						//transition : t3
-						//});
-						//if (retakeTest > 0) {
-
-						//camwindow.close();
-						//retakeTest = 0;
-						//}
-
-						//retakeTest += 1;
-						camwindow.close({
-							animated : true
-						});
-
-						//btn.fireEvent('click', {
-						//name : '2'
-						//});
-
-					}
+					// if (shit == '1') {
+						// //var t2 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
+// 
+						// //camwindow.close({
+						// //transition : t2
+						// //});
+// 
+						// //if (retakeTest > 0) {
+// 
+						// //camwindow.close();
+						// //retakeTest = 0;
+						// //}
+// 
+						// //retakeTest += 1;
+						// camwindow.close();
+						// //btn.fireEvent('click');
+					// } else {
+						// //var t3 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
+// 
+						// //camwindow.close({
+						// //transition : t3
+						// //});
+						// //if (retakeTest > 0) {
+// 
+						// //camwindow.close();
+						// //retakeTest = 0;
+						// //}
+// 
+						// //retakeTest += 1;
+						// camwindow.close({
+							// animated : true
+						// });
+// 
+						// //btn.fireEvent('click', {
+						// //name : '2'
+						// //});
+// 
+					// }
 
 				});
 
@@ -459,6 +463,9 @@ function reportwindow() {
 				submitbtn.left = '32%';
 
 				submitbtn.addEventListener('click', function(e) {
+
+					var emailTest = 0;
+					
 
 					// Email filtering
 					if (details2.value.search("@") < 0) {
