@@ -219,14 +219,13 @@ function reportwindow() {
 				theimg = f.nativePath;
 
 				Ti.API.info('PICsize: ' + img.height + " x " + img.width);
+
+				// This view holds the Captured Image and a Retake button.
 				topview = genericview();
-
 				topview.layout = 'horizontal';
-
 				camwindow.add(topview);
 
-				/////////////// background //////////
-
+				// The background image for the main Report Submission windows.
 				var bgImage2 = Ti.UI.createImageView({
 					height : '100%',
 					width : '100%',
@@ -237,34 +236,27 @@ function reportwindow() {
 
 				camwindow.add(bgImage2);
 
-				//////////////////////////////////
-
+				// This view holds the image which is been captured and shows it in the top view.
 				var imview = makeimview();
-
 				imview.image = theimg;
-
 				topview.add(imview);
 
 				retakebtn = genericButton();
-
 				topview.add(retakebtn);
-
 				camwindow.add(topview);
-
-				//DONE TOP VIEW
-
-				////// Retake Logic ////
+				// All the components of the top view are now in the Main Window.
 
 				retakebtn.addEventListener('click', function(e) {
 					emailTest = 0;
 					try {
 						rclient.abort();
+						// This aborts the uploading process if the user hits the Retake Button while the report is uploading.
 					} catch (error) {
-
+						// We don't care if any error occurs. We just simpl cancel the upload process.
 					}
 					camwindow.close();
 
-					// haroon
+					//  The previous logic of directly opening the camera instead of the tabbed view.
 					// if (shit == '1') {
 					// //var t2 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
 					//
@@ -305,21 +297,14 @@ function reportwindow() {
 					// }
 
 				});
-
-				////////////////////////
-
 				//setupGPS();
 
+				// This view holds 2 text fields (Description/MeterNumber and Email), Submit Button, a Progress bar and an Uploading status.
 				lowerview = genericview();
-
 				lowerview.layout = 'vertical';
-
 				lowerview.top = '35%';
-
 				lowerview.height = Ti.UI.SIZE;
-
 				lowerview.width = Ti.UI.SIZE;
-
 				camwindow.add(lowerview);
 
 				var details = textfieldsetup();
