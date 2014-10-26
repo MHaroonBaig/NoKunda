@@ -20,19 +20,11 @@ var analytics = new gaModule('UA-55042156-1');
 function reportwindow() {
 
 	var rwindow = Ti.UI.createWindow({
-
 		title : 'Report!',
-
 		backgroundColor : '#2079b4',
-
 		barColor : '#3498db',
-
 		fullscreen : true,
-		//backgroundImage : '/Default@2x.png',
 		navBarHidden : true,
-
-		//backgroundImage : back,
-
 	});
 
 	// This is the background image for the 'Capture Kunda' and 'Report Meter' view.
@@ -73,34 +65,20 @@ function reportwindow() {
 		font : {
 
 			fontSize : 17,
-
 			fontWeight : 'bold',
-
 			fontFamily : 'Helvetica Neue'
-
 		},
 
 		width : '80%',
-
 		height : '15%',
-
 		top : '55%',
-
-		//bottom : '7%',
-
 		color : '#ffffff',
-
-		//backgroundColor : '#2079b4',
 		backgroundColor : "#2079B4",
-
 		borderColor : "#092436",
 		borderWidth : 3,
-
 		borderRadius : 12,
 
 	});
-
-	////////////// Meter Report /////////////////////
 
 	var btn2 = Ti.UI.createButton({
 
@@ -117,43 +95,28 @@ function reportwindow() {
 		},
 
 		width : '80%',
-
 		height : '15%',
-
-		//top : '60%',
-
 		bottom : '13%',
-
 		color : '#ffffff',
-
-		//backgroundColor : '#2079b4',
-
 		backgroundColor : "#2079B4",
 		borderColor : "#092436",
 		borderWidth : 3,
-
 		borderRadius : 12,
 
 	});
 
-	/////////////////////////
-
 	var about = Ti.UI.createImageView({
 		height : '8%',
-		//width : '100%',
-		//top : 0,
 		left : '85%',
 		bottom : "3%",
 		image : 'info.jpg'
 	});
 
-	///////////// about page //////////////
-	//////////////////////////////////////
-
+	// The about page
 	about.addEventListener("click", function(e) {
 
+		// This is the tutorial window.
 		var wintut = Titanium.UI.createWindow({
-			//title:"Camera Preview",
 			backgroundColor : '#2079b4',
 			navBarHidden : true,
 			exitOnClose : true
@@ -184,14 +147,7 @@ function reportwindow() {
 
 		startbtn.addEventListener("click", function(e) {
 			var wintabs = require('tabs')();
-			/*var tabswin = Ti.UI.createWindow(
-			 {
-			 url: "tabs.js",
-			 //title:'NoKunda Getting GPS!',
-			 //backgroundColor:'#191919'
-			 });
-			 tabswin.open();
-			 */
+			// Opening the tabbed view
 		});
 
 		var t4 = Ti.UI.iPhone.AnimationStyle.CURL_DOWN;
@@ -201,14 +157,10 @@ function reportwindow() {
 			transition : t4
 		});
 	});
-	//////////////////////////////////////
-	//////////////////////////////////////
 
 	rwindow.add(about);
-	//need to add a listener and make it darker
 
-	/////////////////////////
-
+	// 'Report Meter' event. As this triggers the same event as that of 'Capture Kunda', so the 'name' argument is passed while triggering this event for 'Report Meter' which differetiates the functionality.
 	btn2.addEventListener('click', function(e) {
 
 		btn.fireEvent('click', {
@@ -217,26 +169,28 @@ function reportwindow() {
 
 	});
 
-	/////////////////////////////////////////////////
-
+	// The original 'Capture Kunda' event.
 	btn.addEventListener('click', function(e) {
 		rwindow.close();
+		// As the main view where the report submission takes place is opened, the main 'Capture Kunda' and 'Report Meter' view has to be closed here.
 		emailTest = 0;
+		// Again, the email-dialog box trigger checking
 		myProgress.value = 0;
 
 		//camwindow = createwindows(rwindow.width, rwindow.height);
+
 		var shit;
 		var shit2;
+		// This variable differentiates between Kunda and Report event. If its '2', then its Meter event. If its '1', its the Kunda event.
+
 		if (e.name == '2') {
 			shit = '2';
-			//shit2 = 'Meter No: ';
-			//shit2 = shit2 + details.value;
-
 		} else {
 			shit = '1';
-			//shit2 = details.value;
 		}
+
 		var camwindow = createwindows();
+		// The creation of the main Report Submission window
 
 		Titanium.Media.showCamera({
 
@@ -244,47 +198,27 @@ function reportwindow() {
 
 			success : function(e) {
 
-				//var img = e.media;
-
 				var img = e.media.imageAsResized(300, 300);
 
 				var imgcam = Ti.UI.createImageView({
-
 					image : img,
-
-					//backgroundImage: 'KS_nav_views.png',
-
-					//defaultImage: e.media,
-
 					backgroundColor : 'transparent',
-
 					width : 200,
-
 					height : 200,
-
-					//transform : Ti.UI.create2DMatrix().rotate(90)
 
 				});
 
 				var img2 = imgcam.toImage().media;
+				// Adjusting the format of the image. Just for the security because it has to be uploaded to the backend.
 
 				var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, 'temp.jpg');
 
 				f.write(img);
 
+				// Holds the path where the Captured Image is being stored.
 				theimg = f.nativePath;
 
 				Ti.API.info('PICsize: ' + img.height + " x " + img.width);
-
-				// Added opening animation
-
-				//var t = Ti.UI.iPhone.AnimationStyle.CURL_UP;
-
-				//camwindow.open({
-				//transition : t
-				//});
-				//camwindow.open();
-
 				topview = genericview();
 
 				topview.layout = 'horizontal';
