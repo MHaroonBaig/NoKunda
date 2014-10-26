@@ -308,14 +308,19 @@ function reportwindow() {
 				camwindow.add(lowerview);
 
 				var details = textfieldsetup();
+
+				// This is the text field for the Description when the event was triggered for Kunda, and Meter# if the event was triggered from 'Report Meter'.
 				if (shit == '2') {
+					// Incase of 'Report Meter'
 					details.hintText = 'Enter the Meter No ';
 
+					// This is for giving an extra space to 'Done' button when a numeric keypad appears.
 					var flexSpace = Ti.UI.createButton({
 						systemButton : Ti.UI.iPhone.SystemButton.FLEXIBLE_SPACE,
 						right : 0
 					});
 
+					// This is a small button which appears at the upper right corner of the Numeric Keypad.
 					var doneButton = Ti.UI.createButton({
 						systemButton : Ti.UI.iPhone.SystemButton.DONE,
 						right : '50%'
@@ -325,72 +330,68 @@ function reportwindow() {
 
 					doneButton.addEventListener('click', function(e) {
 						e.source.activeFld.blur();
+						// Focus on the active field, which in this case is 'MeterNumber', when the Done Button is pressed.
 					});
 
 					details.keyboardToolbar = [flexSpace, doneButton];
 					details.keyboardType = Ti.UI.KEYBOARD_NUMBER_PAD;
-					//details.keyboardToolbar = [Done];
-					//details.left = '30%';
 					details.width = "100%";
+
 					var meterno = genericLabel();
 					meterno.text = "Meter No: ";
 					meterno.textAlign = Ti.UI.LEFT;
 					meterno.backgroundColor = 'transparent';
-
 					lowerview.add(meterno);
+					// The MeterNumber label.
+
 				} else {
+					// Incase if the event is triggered for Capturing Kunda.
 					details.hintText = "Please enter your location ";
 					var meterno1 = genericLabel();
 					meterno1.text = "Description: ";
-
 					meterno1.textAlign = Ti.UI.LEFT;
-					//meterno1.opacity = 0.25;
-					//meterno1.color = '#000',
 					meterno1.backgroundColor = 'transparent';
 					lowerview.add(meterno1);
-
+					// The Description Label.
 				}
 
 				var meterno11 = genericLabel();
 				meterno11.text = "\nEnter your Email for feedback: ";
 				meterno11.textAlign = Ti.UI.LEFT;
-				//meterno11.top = "20%";
 				meterno11.backgroundColor = 'transparent';
 
 				lowerview.add(details);
-				lowerview.add(meterno11);
+				// The Decription/MeterNumber field.
 
-				/////////// E-mail ////////////
+				lowerview.add(meterno11);
+				// The E-mail field Label.
+
+				// This is the email field.
 				var details2 = textfieldsetup();
 				details2.hintText = "Email: ";
 				details2.top = "1%";
 				lowerview.add(details2);
+				// The E-mail field.
 
-				//////////////////////////////
+				// This is the main submit button to upload the report.
 				submitbtn = genericButton();
-
 				submitbtn.title = 'Submit Report';
 				submitbtn.backgroundColor = "#4C93C3";
 				submitbtn.borderColor = "#2D5875";
 				submitbtn.borderWidth = 2;
-
 				submitbtn.top = '5%';
-
 				submitbtn.height = '12%';
-
 				submitbtn.left = '32%';
 
 				submitbtn.addEventListener('click', function(e) {
 
 					var emailTest = 0;
 
-					// Email filtering
 					if (details2.value.search("@") < 0) {
-
-						emailTest += 1;
+						// This block is for notifying the user if he/she has entered an incorrect Email.
 
 						if (emailTest < 3) {
-
+							emailTest += 1;
 							var emailError = Titanium.UI.createAlertDialog({
 								title : 'Invalid Email',
 								message : 'Please enter a valid Email address'
@@ -402,31 +403,24 @@ function reportwindow() {
 						emailTest = 0;
 					}
 
-					//alert(details.value);
-
 					if (lat == 0 && longi == 0) {
-
-						//displaydata.text = 'Wait for coordinates! Cant submit yet!';
-
+						// The report isn't uploaded when the location isn't fetched.
+						displaydata.text = 'Fetching the location. Please wait.';
 						return;
-
 					}
 
 					if (shit == '2' && String(details.value).length == 0) {
 						alert("Please Enter the Meter Number");
 						return;
-
 					}
 
 					myProgress.show();
-					details.backgroundColor = "#CDCDCD";
-					details2.backgroundColor = "#CDCDCD";
-					details.backgroundDisabledColor = "#CDCDCD";
-					details2.backgroundDisabledColor = "#CDCDCD";
+					
+					// Both the text fields are disabled when the report starts uploading.
 					details.editable = false;
 					details2.editable = false;
 
-					submitbtn.enabled = false;
+					submitbtn.enabled = false; // Disable the submit button while the report is uploading.
 
 					if (String(details.value).length < 3) {
 
