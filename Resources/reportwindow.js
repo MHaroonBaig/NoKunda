@@ -55,20 +55,15 @@ function reportwindow() {
 		borderWidth : 1,
 		borderRadius : 1,
 		borderColor : '#092436',
-
 	});
 
 	var btn = Ti.UI.createButton({
-
 		title : 'Capture Kunda',
-
 		font : {
-
 			fontSize : 17,
 			fontWeight : 'bold',
 			fontFamily : 'Helvetica Neue'
 		},
-
 		width : '80%',
 		height : '15%',
 		top : '55%',
@@ -77,23 +72,15 @@ function reportwindow() {
 		borderColor : "#092436",
 		borderWidth : 3,
 		borderRadius : 12,
-
 	});
 
 	var btn2 = Ti.UI.createButton({
-
 		title : 'Report a Meter ',
-
 		font : {
-
 			fontSize : 17,
-
 			fontWeight : 'bold',
-
 			fontFamily : 'Helvetica Neue'
-
 		},
-
 		width : '80%',
 		height : '15%',
 		bottom : '13%',
@@ -102,7 +89,6 @@ function reportwindow() {
 		borderColor : "#092436",
 		borderWidth : 3,
 		borderRadius : 12,
-
 	});
 
 	var about = Ti.UI.createImageView({
@@ -166,7 +152,6 @@ function reportwindow() {
 		btn.fireEvent('click', {
 			name : '2'
 		});
-
 	});
 
 	// The original 'Capture Kunda' event.
@@ -180,8 +165,10 @@ function reportwindow() {
 		//camwindow = createwindows(rwindow.width, rwindow.height);
 
 		var shit;
-		var shit2;
 		// This variable differentiates between Kunda and Report event. If its '2', then its Meter event. If its '1', its the Kunda event.
+
+		var shit2;
+		// This specifies the title of our report. Incase of MeterNumber, it's like 'Meter No: 1122334455'. Incase of Kunda, it's like, "Kunda at Cantt, Peshawar".
 
 		if (e.name == '2') {
 			shit = '2';
@@ -193,26 +180,20 @@ function reportwindow() {
 		// The creation of the main Report Submission window
 
 		Titanium.Media.showCamera({
-
 			showControls : false,
 
 			success : function(e) {
-
 				var img = e.media.imageAsResized(300, 300);
-
 				var imgcam = Ti.UI.createImageView({
 					image : img,
 					backgroundColor : 'transparent',
 					width : 200,
 					height : 200,
-
 				});
-
 				var img2 = imgcam.toImage().media;
 				// Adjusting the format of the image. Just for the security because it has to be uploaded to the backend.
 
 				var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, 'temp.jpg');
-
 				f.write(img);
 
 				// Holds the path where the Captured Image is being stored.
@@ -384,12 +365,9 @@ function reportwindow() {
 				submitbtn.left = '32%';
 
 				submitbtn.addEventListener('click', function(e) {
-
 					var emailTest = 0;
-
 					if (details2.value.search("@") < 0) {
 						// This block is for notifying the user if he/she has entered an incorrect Email.
-
 						if (emailTest < 3) {
 							emailTest += 1;
 							var emailError = Titanium.UI.createAlertDialog({
@@ -415,38 +393,36 @@ function reportwindow() {
 					}
 
 					myProgress.show();
-					
+
 					// Both the text fields are disabled when the report starts uploading.
 					details.editable = false;
 					details2.editable = false;
 
-					submitbtn.enabled = false; // Disable the submit button while the report is uploading.
+					submitbtn.enabled = false;
+					// Disable the submit button while the report is uploading.
 
 					if (String(details.value).length < 3) {
-
 						details.value = 'NoDetails';
-
 					}
 
 					var par = getparams();
+					// Getting the parameters to be sent to the POST request.
 
+					// Preparing the Client for POST request to the server.
 					rclient = Titanium.Network.createHTTPClient();
-
 					rclient.open("POST", "http://nokunda.labandroid.com/api");
-
 					rclient.setRequestHeader("Connection", "close");
 
 					rclient.onload = function() {
-
-						//alert("Thank you. Your report has been uploaded.");
+						// This block is for when the report is finished uploading.
 						//alert(this.responseText);
 						var thankYou = Titanium.UI.createAlertDialog({
 							title : 'Thank You',
 							message : 'Your report has been uploaded'
 						});
 						thankYou.show();
-						///////// customised dialog /////////
-						// hahaha
+
+						// Preparing the Twitter View once the report has been successfully submitted.
 						var vwAlert = Ti.UI.createView({
 							backgroundColor : '#311919',
 							width : '90%',
@@ -492,27 +468,20 @@ function reportwindow() {
 						tweetbtn = genericButton();
 						tweetbtn.backgroundColor = "#1dcaff";
 						tweetbtn.borderColor = "#092436";
-						//fbbtn.backgroundSelectedColor  = "#000";
 						tweetbtn.borderWidth = 2;
-
 						tweetbtn.title = 'Tweet it';
-
 						tweetbtn.top = '23';
-
 						tweetbtn.height = '12%';
-
 						tweetbtn.left = '30%';
 
 						tweetbtn.addEventListener('click', function(e) {
 							fbbtn.fireEvent('click', {
 								tweetStatus : tweetField.value
 							});
-
 						});
 
-						// btn-skip animation
-
 						btnSkip.addEventListener('click', function(e) {
+
 							var t1 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
 
 							camwindow.close({
@@ -528,40 +497,37 @@ function reportwindow() {
 						camwindow.fullscreen = true;
 						camwindow.add(vwAlert);
 
-						/////////////////////////////////////
-
 						//curlevel(1);
-
 					};
 
 					rclient.timeout = 18000;
+					// A timeout of 18 seconds. If the report isn't submitted in the time frame of 18 seconds, it's then saved into the database.
 
 					rclient.onsendstream = function(e) {
-
+						// This block executes whenever the state of our client changes. We update our progress bar here.
 						var ee = parseInt((100 * (parseFloat(e.progress)) ));
 						displaydata.text = 'Uploading: ' + parseInt((100 * (parseFloat(e.progress)) )) + '%';
 						if (ee == 100) {
 							myProgress.value = 0;
 						}
 						myProgress.value = ee;
-
 					};
 
 					rclient.onerror = function(e) {
-
+						// This block is executed whenever there is some error while uploading the report. We save that report into the database.
 						Ti.Database.install('mydb1.sqllite', 'mydb');
 						var db = Ti.Database.open("mydb");
 
 						alert("There seems to be an error. Report saved.");
 
 						db.execute('CREATE TABLE IF NOT EXISTS params(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT, date TEXT, hour TEXT, minute TEXT, ampm TEXT, lat TEXT, longi TEXT, loc TEXT, pic TEXT);');
-
 						db.execute('INSERT INTO params (title, description, date, hour, minute, ampm, lat, longi, loc, pic) VALUES (?,?,?,?,?,?,?,?,?,?)', details.value, details.value, par.incident_date, par.incident_hour, par.incident_minute, par.incident_ampm, lat, longi, details.value, theimg);
-
 						db.close();
 
-						camwindow.close();
-
+						var t12 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
+						camwindow.close({
+							transition : t12
+						});
 					};
 
 					if (shit == '2') {
@@ -575,37 +541,21 @@ function reportwindow() {
 					var params = {
 
 						"task" : "report",
-
 						"incident_title" : shit2,
-
 						incident_description : details.value,
-
 						incident_date : par.incident_date,
-
 						incident_hour : par.incident_hour,
-
 						incident_minute : par.incident_minute,
-
 						incident_ampm : par.incident_ampm,
-
 						incident_category : '1',
-
 						latitude : lat,
-
 						longitude : longi,
-
 						location_name : details.value,
-
 						"incident_photo[]" : img,
-
 						person_email : details2.value,
-
 						incident_category : shit,
-
 					};
-
 					rclient.send(params);
-
 				});
 
 				lowerview.add(submitbtn);
@@ -613,21 +563,14 @@ function reportwindow() {
 				fbbtn = genericButton();
 				fbbtn.backgroundColor = "#1dcaff";
 				fbbtn.borderColor = "#0084b4";
-				//fbbtn.backgroundSelectedColor  = "#000";
 				fbbtn.borderWidth = 2;
-
 				fbbtn.title = 'Tweet it';
-
 				fbbtn.top = '4%';
-
 				fbbtn.height = '12%';
-
 				fbbtn.left = '32%';
 
 				fbbtn.addEventListener('click', function(e) {
-
-					/////////////
-
+					// Sending a Tweet here.
 					var status = details.value + "\n#NoKunda ";
 
 					if (shit == '2')
@@ -635,26 +578,19 @@ function reportwindow() {
 
 					status = e.tweetStatus;
 					status += " \n #NoKunda";
-					//alert(status);
 					var f = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, 'KS_nav_views.png');
 					var blob = f.read();
 					twitter.share({
 						message : status,
 						image : blob,
 						success : function() {
-							//alert('Tweeted!');
-							//btnSkip.fireEvent('click');
 							var tt = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
-
 							camwindow.close({
 								transition : tt
 							});
 						},
 						error : function(error) {
-							//alert('Oh no! ' + error);
-							//btnSkip.fireEvent('click');
 							var tt1 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
-
 							camwindow.close({
 								transition : tt1
 							});
@@ -663,171 +599,126 @@ function reportwindow() {
 
 				});
 
-				//lowerview.add(fbbtn);
-
 				var displaydata = genericLabel();
+				// It shows the status of the uploading report in the form of percentage, above the progress bar.
 				displaydata.backgroundColor = 'transparent';
-
 				displaydata.font = {
-
 					fontSize : 13,
-
 					fontFamily : 'Helvetica Neue'
-
 				};
-
 				displaydata.top = '8%';
 
 				lowerview.add(displaydata);
 				lowerview.add(myProgress);
-				//myProgress.show();
 
 				var coordss = genericLabel();
-
+				// This shows the fetched coordinates.
 				coordss.font = {
-
 					fontSize : 11,
-
 					fontFamily : 'Helvetica Neue'
-
 				};
-
 				coordss.top = '1%';
 				coordss.backgroundColor = 'transparent';
 
 				lowerview.add(coordss);
+
 				camwindow.open({
 					transition : Titanium.UI.iPhone.AnimationStyle.NONE
 				});
 
-				if (Ti.Platform.osname == "android") {
+				// if (Ti.Platform.osname == "android") {
+				// var providerGps = Ti.Geolocation.Android.createLocationProvider({
+				// name : Ti.Geolocation.PROVIDER_GPS,
+				// minUpdateDistance : 0,
+				// minUpdateTime : 0
+				// });
+				//
+				// Ti.Geolocation.Android.addLocationProvider(providerGps);
+				// Ti.Geolocation.Android.manualMode = true;
+				//
+				// //NEW rule
+				//
+				// var Rule = Ti.Geolocation.Android.createLocationRule({
+				//
+				// // Rule applies to GPS provider
+				//
+				// provider : Ti.Geolocation.PROVIDER_GPS,
+				//
+				// // Must be accurate to this value in meters
+				//
+				// accuracy : 10,
+				//
+				// // Location update should be no older than this value in milliseconds
+				//
+				// maxAge : 120,
+				//
+				// // Location updates should be no more frequent than this value in milliseconds
+				//
+				// minAge : 100
+				//
+				// });
+				//
+				// Ti.Geolocation.Android.addLocationRule(Rule);
+				//
+				// } else {
 
-					//win.title = 'Submit Report (A)';
+				Ti.Geolocation.purpose = 'Get Current Location';
+				Ti.Geolocation.distanceFilter = 0;
+				Ti.Geolocation.accuracy = Ti.Geolocation.ACCURACY_BEST;
+				Ti.Geolocation.preferredProvider = Ti.Geolocation.PROVIDER_GPS;
 
-					var providerGps = Ti.Geolocation.Android.createLocationProvider({
-
-						name : Ti.Geolocation.PROVIDER_GPS,
-
-						minUpdateDistance : 0,
-
-						minUpdateTime : 0
-
-					});
-
-					Ti.Geolocation.Android.addLocationProvider(providerGps);
-
-					Ti.Geolocation.Android.manualMode = true;
-
-					//NEW rule
-
-					var Rule = Ti.Geolocation.Android.createLocationRule({
-
-						// Rule applies to GPS provider
-
-						provider : Ti.Geolocation.PROVIDER_GPS,
-
-						// Must be accurate to this value in meters
-
-						accuracy : 10,
-
-						// Location update should be no older than this value in milliseconds
-
-						maxAge : 120,
-
-						// Location updates should be no more frequent than this value in milliseconds
-
-						minAge : 100
-
-					});
-
-					Ti.Geolocation.Android.addLocationRule(Rule);
-
-				} else {
-
-					//win.title = 'Camera Preview iOS';
-
-					Ti.Geolocation.purpose = 'Get Current Location';
-
-					Ti.Geolocation.distanceFilter = 0;
-
-					Ti.Geolocation.accuracy = Ti.Geolocation.ACCURACY_BEST;
-
-					Ti.Geolocation.preferredProvider = Ti.Geolocation.PROVIDER_GPS;
-
-					//Ti.Geolocation.accuracy = Titanium.Geolocation.ACCURACY_HIGH;
-
-				}
+				//}
 
 				Ti.Geolocation.addEventListener('location', function(e) {
 
 					if (!e.success || e.error) {
-
 						coordss.text = 'Fetching the Locations. Please wait.';
-
-						//alert('error ' + JSON.stringify(e.error));
-
 						lat = 0;
-
 						longi = 0;
-
 						return;
-
 					}
-
-					//coordss.text = 'Lat: ' + e.coords.latitude + ' Long: ' + e.coords.longitude;
 					coordss.text = "Location Fetched";
 					lat = e.coords.latitude;
-
 					longi = e.coords.longitude;
 
 				});
-
 			},
-
 			error : function(e) {
-
 				alert("An error occured");
-
 			},
-
 			cancel : function(e) {
-
 				//alert("The event was cancelled");
-
 			},
 
 			saveToPhotoGallery : false,
-
 			mediaTypes : [Titanium.Media.MEDIA_TYPE_PHOTO],
-
 			showControls : true
 
 		});
 
-		//camera function END
-
-		//Ti.UI.currentTab.add(camwindow);
-
 	});
 
 	rwindow.add(btn);
+	// Adding the Kunda Button.
+
 	rwindow.add(btn2);
+	// Adding the MeterNumber Button.
 
-	var nokundalabel = genericLabel();
-
-	nokundalabel.text = 'NoKunda';
-
-	nokundalabel.font = {
-
-		fontSize : 28,
-
-		fontFamily : 'Helvetica Neue',
-
-		fontWeight : 'bold'
-
-	};
-
-	nokundalabel.top = '10%';
+	// var nokundalabel = genericLabel();
+	//
+	// nokundalabel.text = 'NoKunda';
+	//
+	// nokundalabel.font = {
+	//
+	// fontSize : 28,
+	//
+	// fontFamily : 'Helvetica Neue',
+	//
+	// fontWeight : 'bold'
+	//
+	// };
+	//
+	// nokundalabel.top = '10%';
 
 	////// Label //////
 
@@ -876,24 +767,15 @@ function createwindows() {
 	win = Ti.UI.createWindow({
 
 		//navBarHidden: true,
-
 		title : 'Submitting Report',
-
 		backgroundColor : '#2079b4',
 		barColor : "#2079b4",
-
-		//width: rwidth,
-
-		//height: rheight
-
 	});
 
 	if (!(Ti.Platform.osname == "android")) {
 
 		var tab = Ti.UI.createTab({
-
 			title : "Submitting Report",
-
 			window : win
 
 		});
@@ -902,229 +784,135 @@ function createwindows() {
 
 	}
 
-	var bannerTop = Titanium.UI.createLabel({
-
-		text : 'Photo Preview',
-
-		font : {
-
-			fontSize : 10,
-
-			fontFamily : 'Helvetica Neue'
-
-		},
-
-		textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
-
-		top : '0%',
-
-		width : '100%',
-
-		height : '5%',
-
-		color : '#7f8c8d',
-
-		backgroundColor : '#ecf0f1'
-
-	});
-
+	// var bannerTop = Titanium.UI.createLabel({
+	//
+	// text : 'Photo Preview',
+	//
+	// font : {
+	//
+	// fontSize : 10,
+	//
+	// fontFamily : 'Helvetica Neue'
+	//
+	// },
+	//
+	// textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
+	//
+	// top : '0%',
+	//
+	// width : '100%',
+	//
+	// height : '5%',
+	//
+	// color : '#7f8c8d',
+	//
+	// backgroundColor : '#ecf0f1'
+	//
+	// });
 	//win.add(bannerTop);
 
 	if (Ti.Platform.osname == "android") {
-
 		return win;
-
 	} else {
-
 		return tabGroup;
-
 	}
-
 }
 
 function genericview() {
 
 	var myview = Ti.UI.createView({
-
-		//layout: 'vertical',
-
 		top : '12%',
-
-		//bottom:'1%',
-
 		left : '3%',
-
 		right : '3%',
-
 		height : '28%',
-
 	});
 
 	return myview;
-
 }
 
-///// imageimage
+// This is the view, responsible for showing the Captured Image.
 function makeimview() {
 
 	var imView = Ti.UI.createImageView({
-
-		//image:theimg,
-
-		//transform : Ti.UI.create2DMatrix().rotate(90),
-
 		width : '45%',
-
 		height : '75%',
-
-		//bottom:'10%',
-
 		autorotate : true,
-
-		//top:'%',
 		borderColor : "#2D5875",
 		borderWidth : 2,
 		borderRadius : 12,
-
-		//top:'7%'
-
 	});
 
 	return imView;
-
 }
 
 function genericButton() {
 
 	var btn = Ti.UI.createButton({
-
 		title : 'Retake Photo',
-
 		font : {
-
 			fontSize : 14,
-
 			fontWeight : 'bold',
-
 			fontFamily : 'Helvetica Neue'
-
 		},
-
 		textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
-
 		width : '40%',
-
 		height : '25%',
-
 		enabled : true,
-
-		//top : '10%',
-
-		//right : '3%',
-
 		left : '10%',
-
-		//paddingLeft : 7,
-
-		//paddingRight : 7,
-
-		//paddingTop : 7,
-
-		//paddingBottom : 7,
-
 		color : '#ffffff',
-
 		backgroundColor : '#4C93C3',
 		borderColor : "#2D5875",
 		borderWidth : 2,
-
 		borderRadius : 6,
 
 	});
 
 	return btn;
-
 }
 
 function genericLabel() {
 
 	var glabel = Titanium.UI.createLabel({
 
-		//text:'N',
-
 		font : {
-
 			fontSize : 14,
-
 			fontFamily : 'Helvetica Neue',
-
 			fontWeight : 'bold'
-
 		},
-
 		textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
-
-		//top: '10%',
-
 		width : Ti.UI.SIZE,
-
 		height : Ti.UI.SIZE,
-
 		color : 'black',
-
 		backgroundColor : '#FFFFFF'
-
 	});
 
 	return glabel;
-
 }
 
 function textareasetup() {
 
 	var title = Ti.UI.createTextArea({
-		//renamed TextField to TextArea for multi row field, may cause error on submission - test
 
 		height : '27%',
-
 		width : '100%',
-
-		paddingLeft : 2, //pad text from borders..
-
+		paddingLeft : 2,
 		paddingRight : 2,
-
 		paddingTop : 2,
-
 		paddingBottom : 2,
-
 		hintText : 'Enter name of location / details....',
-
 		bubbleParent : false,
-
 		opacity : 0.85,
-
 		font : {
-
 			fontSize : 13,
-
 			fontFamily : 'Helvetica Neue'
-
 		},
-
 		color : 'black',
-
 		backgroundColor : '#FFFFFF',
-
 		borderRadius : 5,
-
 		borderStyle : Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-
 		borderWidth : 3,
-
 		borderColor : '#ecf0f1',
-
 		keyboardType : Titanium.UI.KEYBOARD_DEFAULT,
-
 		returnKeyType : Titanium.UI.RETURNKEY_DONE
 
 	});
@@ -1132,133 +920,77 @@ function textareasetup() {
 	return title;
 
 }
-
-///// TextField /////
 
 function textfieldsetup() {
 
 	var title = Ti.UI.createTextField({
-		//renamed TextField to TextArea for multi row field, may cause error on submission - test
 
 		height : '15%',
-
 		width : '100%',
-
 		borderColor : "#2D5875",
 		borderWidth : 1,
-
-		paddingLeft : 2, //pad text from borders..
-
+		paddingLeft : 2,
 		bubbleParent : false,
-
 		opacity : 0.85,
-
 		font : {
-
 			fontSize : 15,
-
 			fontFamily : 'Helvetica Neue'
-
 		},
-
 		color : 'black',
-
 		backgroundColor : '#FFFFFF',
-
 		borderRadius : 5,
-
 		borderStyle : Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-
 		borderWidth : 3,
-
-		//borderColor : '#ecf0f1',
-
 		keyboardType : Titanium.UI.KEYBOARD_DEFAULT,
-
 		returnKeyType : Titanium.UI.RETURNKEY_DONE
-
 	});
 
 	return title;
-
 }
-
-/////////////////////
 
 function getparams() {
 
 	var amPM = '';
-
 	var hour = currentTime.getHours();
-
 	var min = currentTime.getMinutes();
-
 	var year = currentTime.getFullYear();
-
 	var twomonth = ((currentTime.getMonth() + 1) >= 10) ? (currentTime.getMonth() + 1) : '0' + (currentTime.getMonth() + 1);
-
 	var twoday = ((currentTime.getDate()) >= 10) ? (currentTime.getDate()) : '0' + (currentTime.getDate());
-
 	var title = "abc";
-
 	var dateform = twomonth + "/" + twoday + "/" + year;
 
 	if (hour < 12) {
-
 		amPM = 'am';
-
 	} else {
-
 		amPM = 'pm';
-
 	}
 
-	//Converting 24hr format to 12 hr for Ushahidi
+	// Conversion to 24hr format.
 
 	if (hour == 0) {
-
 		hour = 12;
-
 	}
 
 	if (hour > 12) {
-
 		hour = hour - 12;
-
 	}
 
 	var para = {
-
 		"task" : "report",
-
 		"incident_title" : title,
-
 		incident_description : title,
-
 		incident_date : dateform,
-
 		incident_hour : hour,
-
 		incident_minute : min,
-
 		incident_ampm : amPM,
-
 		incident_category : '1',
-
 		latitude : lat,
-
 		longitude : longi,
-
 		location_name : title,
-
-		//incident_photo:e.media
-
 		"incident_photo[]" : 'blah'
-
 	};
 
 	return para;
-
 }
 
 // function curlevel(check) {
