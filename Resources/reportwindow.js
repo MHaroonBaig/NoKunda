@@ -329,46 +329,45 @@ function reportwindow() {
 
 					}
 					camwindow.close();
-					
-					
+
 					// haroon
 					// if (shit == '1') {
-						// //var t2 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
-// 
-						// //camwindow.close({
-						// //transition : t2
-						// //});
-// 
-						// //if (retakeTest > 0) {
-// 
-						// //camwindow.close();
-						// //retakeTest = 0;
-						// //}
-// 
-						// //retakeTest += 1;
-						// camwindow.close();
-						// //btn.fireEvent('click');
+					// //var t2 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
+					//
+					// //camwindow.close({
+					// //transition : t2
+					// //});
+					//
+					// //if (retakeTest > 0) {
+					//
+					// //camwindow.close();
+					// //retakeTest = 0;
+					// //}
+					//
+					// //retakeTest += 1;
+					// camwindow.close();
+					// //btn.fireEvent('click');
 					// } else {
-						// //var t3 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
-// 
-						// //camwindow.close({
-						// //transition : t3
-						// //});
-						// //if (retakeTest > 0) {
-// 
-						// //camwindow.close();
-						// //retakeTest = 0;
-						// //}
-// 
-						// //retakeTest += 1;
-						// camwindow.close({
-							// animated : true
-						// });
-// 
-						// //btn.fireEvent('click', {
-						// //name : '2'
-						// //});
-// 
+					// //var t3 = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
+					//
+					// //camwindow.close({
+					// //transition : t3
+					// //});
+					// //if (retakeTest > 0) {
+					//
+					// //camwindow.close();
+					// //retakeTest = 0;
+					// //}
+					//
+					// //retakeTest += 1;
+					// camwindow.close({
+					// animated : true
+					// });
+					//
+					// //btn.fireEvent('click', {
+					// //name : '2'
+					// //});
+					//
 					// }
 
 				});
@@ -465,7 +464,6 @@ function reportwindow() {
 				submitbtn.addEventListener('click', function(e) {
 
 					var emailTest = 0;
-					
 
 					// Email filtering
 					if (details2.value.search("@") < 0) {
