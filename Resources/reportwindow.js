@@ -1,6 +1,8 @@
 var lat = 0;
 var retakeTest = 0;
+// For not closing the first window, and close the rest after that. It prevents the copies of windows which are being made when the retake event is triggered.
 var emailTest = 0;
+// The 'Incorrect Email' dialog box appears only once. Or else, the email field is overridden by 'abc@example.com'
 
 var longi = 0;
 var social = require('social');
@@ -33,6 +35,7 @@ function reportwindow() {
 
 	});
 
+	// This is the background image for the 'Capture Kunda' and 'Report Meter' view.
 	var bgImage = Ti.UI.createImageView({
 		height : '100%',
 		width : '100%',
@@ -57,14 +60,11 @@ function reportwindow() {
 		min : 0,
 		max : 100,
 		value : 0,
-		//style : Titanium.UI.iPhone.ProgressBarStyle.BAR,
 		borderWidth : 1,
 		borderRadius : 1,
 		borderColor : '#092436',
 
 	});
-
-	//rwindow.add(myProgress);
 
 	var btn = Ti.UI.createButton({
 
@@ -920,29 +920,29 @@ function reportwindow() {
 
 	//rwindow.add(nokundalabel);
 
-	function updatestuff() {
-
-		var currentlabel = genericLabel();
-
-		currentlabel.top = '25%';
-
-		level = curlevel(2);
-
-		currentlabel.text = "Current Level: " + level;
-
-		rwindow.add(currentlabel);
-
-		var pending = genericLabel();
-
-		pending.top = '34%';
-
-		pendingrep = getpending();
-
-		pending.text = 'Pending Reports: ' + pendingrep;
-
-		rwindow.add(pending);
-
-	}
+	// function updatestuff() {
+	//
+	// var currentlabel = genericLabel();
+	//
+	// currentlabel.top = '25%';
+	//
+	// level = curlevel(2);
+	//
+	// currentlabel.text = "Current Level: " + level;
+	//
+	// rwindow.add(currentlabel);
+	//
+	// var pending = genericLabel();
+	//
+	// pending.top = '34%';
+	//
+	// pendingrep = getpending();
+	//
+	// pending.text = 'Pending Reports: ' + pendingrep;
+	//
+	// rwindow.add(pending);
+	//
+	// }
 
 	return rwindow;
 
