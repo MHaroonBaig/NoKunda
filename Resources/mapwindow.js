@@ -5,12 +5,23 @@ var Map = require('ti.map');
 function mapwindow() {
 	var self = Ti.UI.createWindow({
 		title : 'Crowdsourced Map',
+		titleAttributes : {
+			color : '#FFF',
+
+			font : {
+				fontSize : 19,
+				fontWeight : 'bold',
+				fontFamily : 'STHeitiSC-Medium'
+			},
+
+		},
+
 		backgroundColor : '#2079b4',
 		barColor : "#2079b4",
 		//fullscreen : true,
 		//backgroundImage : '/Default@2x.png',
 		//navBarHidden : true,
-		
+
 	});
 	self.addEventListener('focus', fillMap);
 

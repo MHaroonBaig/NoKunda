@@ -60,9 +60,9 @@ function reportwindow() {
 	var btn = Ti.UI.createButton({
 		title : 'Capture Kunda',
 		font : {
-			fontSize : 17,
+			fontSize : 19,
 			fontWeight : 'bold',
-			fontFamily : 'Helvetica Neue'
+			fontFamily : 'STHeitiSC-Medium'
 		},
 		width : '80%',
 		height : '15%',
@@ -77,9 +77,9 @@ function reportwindow() {
 	var btn2 = Ti.UI.createButton({
 		title : 'Report a Meter ',
 		font : {
-			fontSize : 17,
+			fontSize : 19,
 			fontWeight : 'bold',
-			fontFamily : 'Helvetica Neue'
+			fontFamily : 'STHeitiSC-Medium'
 		},
 		width : '80%',
 		height : '15%',
@@ -124,11 +124,12 @@ function reportwindow() {
 			height : '15%',
 			top : '85%',
 			font : {
-				fontSize : 14,
+				fontSize : 29,
 				fontWeight : 'bold',
-				fontFamily : 'Helvetica Neue'
+				fontFamily : 'STHeitiSC-Medium'
 			},
-			backgroundColor : '#3498db'
+			backgroundColor : '#3498db',
+			color : "#FFFFFF"
 		});
 
 		startbtn.addEventListener("click", function(e) {
@@ -193,15 +194,14 @@ function reportwindow() {
 				var img2 = imgcam.toImage().media;
 				// Adjusting the format of the image. Just for the security because it has to be uploaded to the backend.
 
-				var randVal = 11+(Math.random()*(111-11));
+				var randVal = 11 + (Math.random() * (111 - 11));
 				randVal = Math.round(randVal);
-				
-				var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, randVal.toString()+'temp.jpg'); 
-				
-				
+
+				var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, randVal.toString() + 'temp.jpg');
+
 				//alert(randVal.toString());
-				//var f = Titanium.Filesystem.getFile(Titanium.Filesystem.externalStorageDirectory, currentTime.getMinutes().toString() + ".jpg");	
-				
+				//var f = Titanium.Filesystem.getFile(Titanium.Filesystem.externalStorageDirectory, currentTime.getMinutes().toString() + ".jpg");
+
 				f.write(img);
 
 				// Holds the path where the Captured Image is being stored.

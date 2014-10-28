@@ -60,11 +60,12 @@ if (row.isValidRow()) {
 		height : '15%',
 		top : '85%',
 		font : {
-			fontSize : 14,
+			fontSize : 29,
 			fontWeight : 'bold',
-			fontFamily : 'Helvetica Neue'
+			fontFamily : 'STHeitiSC-Medium'
 		},
-		backgroundColor : '#3498db'
+		backgroundColor : '#3498db',
+		color : "#FFFFFF"
 	});
 
 	startbtn.addEventListener("click", function(e) {

@@ -1,6 +1,16 @@
 function savedwindow() {
 	var swindow = Ti.UI.createWindow({
 		title : 'Saved Reports',
+		titleAttributes : {
+			color : '#FFF',
+
+			font : {
+				fontSize : 19,
+				fontWeight : 'bold',
+				fontFamily : 'STHeitiSC-Medium'
+			},
+
+		},
 		backgroundColor : '#FFFFFF',
 		barColor : '#2079b4',
 		//fullscreen: true,
@@ -42,10 +52,10 @@ function savedwindow() {
 				height : '34dp',
 				right : '6dp',
 				font : {
-					fontSize : 13,
-					//fontWeight : 'bold',
-					fontFamily : 'Helvetica Neue'
-				},
+				fontSize : 11,
+				fontWeight : 'bold',
+				fontFamily : 'STHeitiSC-Medium'
+			},
 				title : 'Upload',
 				backgroundColor : '#3498db',
 				borderRadius : 4,
