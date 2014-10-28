@@ -193,7 +193,15 @@ function reportwindow() {
 				var img2 = imgcam.toImage().media;
 				// Adjusting the format of the image. Just for the security because it has to be uploaded to the backend.
 
-				var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, 'temp.jpg');
+				var randVal = 11+(Math.random()*(111-11));
+				randVal = Math.round(randVal);
+				
+				var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, randVal.toString()+'temp.jpg'); 
+				
+				
+				//alert(randVal.toString());
+				//var f = Titanium.Filesystem.getFile(Titanium.Filesystem.externalStorageDirectory, currentTime.getMinutes().toString() + ".jpg");	
+				
 				f.write(img);
 
 				// Holds the path where the Captured Image is being stored.
