@@ -58,7 +58,8 @@ function savedwindow() {
 	};
 
 	function upload(e) {
-		Ti.API.info('Upload clicked: ' + e.type);
+		//Ti.API.info('Upload clicked: ' + e.type);
+		alert("Your report will be uploaded shortly");
 		var item = e.section.getItemAt(e.itemIndex);
 		//alert('Report ID clicked: ' + item.id);
 
@@ -103,7 +104,7 @@ function savedwindow() {
 
 		rclient.onsendstream = function(e) {
 			//alert("Uploading. Check progress");
-			Ti.API.info('PROGRESS: ' + e.progress);
+			//Ti.API.info('PROGRESS: ' + e.progress);
 		};
 
 		rclient.onerror = function(e) {
