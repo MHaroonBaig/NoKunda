@@ -890,7 +890,7 @@ function genericButton() {
 		},
 		textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
 		width : '40%',
-		height : '25%',
+		height : '30%',
 		enabled : true,
 		left : '10%',
 		color : '#ffffff',

@@ -72,14 +72,17 @@ function savedwindow() {
 
 	// This function is called whenever the user taps on the Upload button in the List.
 	function upload(e) {
-		if (test > 1) {
-			var uploaded = Titanium.UI.createAlertDialog({
-				title : 'Sending Report',
-				message : 'Your report would be received shortly'
-			});
-			uploaded.show();
-		}
-		test += 1;
+		var section = e.section;
+		var itenIndex = e.itemIndex;
+
+		// if (test > 1) {
+		// var uploaded = Titanium.UI.createAlertDialog({
+		// title : 'Sending Report',
+		// message : 'Your report would be received shortly'
+		// });
+		// uploaded.show();
+		// }
+		// test += 1;
 
 		var item = e.section.getItemAt(e.itemIndex);
 		var db = Ti.Database.open("mydb");
@@ -98,7 +101,9 @@ function savedwindow() {
 			var task_para = 'report';
 		}
 		db.close();
-
+		section.deleteItemsAt(itenIndex, 1, {
+			animationStyle : Titanium.UI.iPhone.RowAnimationStyle.LEFT
+		});
 		var fpic = Ti.Filesystem.getFile(j);
 		// Gets the picture from the Database to upload.
 		var photo = fpic.read();
@@ -111,7 +116,7 @@ function savedwindow() {
 			// When the report finishes uploading, we delete that report from the database and throw a little thank you message.
 			var db = Ti.Database.open("mydb");
 			db.execute('DELETE FROM params WHERE id=?', item.id);
-			listreports();
+			//listreports();
 			response = JSON.parse(this.responseText);
 			row = db.execute('SELECT count FROM counter');
 			var currcount = row.fieldByName("count");
@@ -192,10 +197,7 @@ function savedwindow() {
 		lview.sections = [section];
 
 		lview.addEventListener('itemclick', function(e) {
-
-			if (e.bindId == 'button' || e.bindId == 'photo') {
-				var item = e.section.getItemAt(e.itemIndex);
-			}
+			upload(e);
 		});
 		swindow.add(lview);
 	}

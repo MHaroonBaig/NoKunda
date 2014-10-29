@@ -34,7 +34,7 @@ function tabs() {
 	{
 		backgroundColor : '#092436',
 		borderColor : "#092436",
-		borderWidth:2,
+		borderWidth:1,
 		
 		
 	}, // View parameters for the background
@@ -66,9 +66,8 @@ function tabs() {
 		font : {
 			fontSize : 17,
 			fontWeight : 'bold',
-			fontFamily : 'STHeitiSC-Medium'
+			fontFamily : 'STHeitiSC-Light'
 		},
-		//borderRadius:4,
 		opacity:0.9,
 	} // View parameters for deselected tabs
 	);
