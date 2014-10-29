@@ -1,7 +1,7 @@
 function savedwindow() {
-
+	// This window shows all the reports that were failed to upload. You can upload them here.
 	var test = 1;
-	var test2 = 1;
+
 	var swindow = Ti.UI.createWindow({
 		title : 'Saved Reports',
 		titleAttributes : {
@@ -16,16 +16,16 @@ function savedwindow() {
 		},
 		backgroundColor : '#FFFFFF',
 		barColor : '#2079b4',
-		//fullscreen: true,
-		//navBarHidden: true
+
 	});
 	swindow.addEventListener('focus', listreports);
 
+	// This is a template from which our ListView would be created.
 	var myTemplate = {
 		childTemplates : [{
-			type : 'Ti.UI.ImageView', // Use an image view
-			bindId : 'photo', // Bind ID for this image view
-			properties : {// Sets the ImageView.image property
+			type : 'Ti.UI.ImageView',
+			bindId : 'photo',
+			properties : {
 				image : 'KS_nav_ui.png',
 				left : '6dp',
 				height : '40dp',
@@ -33,7 +33,7 @@ function savedwindow() {
 			},
 			events : {
 				click : upload
-			} // Binds a callback to the button's click event
+			}
 		}, {
 			type : 'Ti.UI.Label',
 			bindId : 'rowtitle',
@@ -42,7 +42,7 @@ function savedwindow() {
 				font : {
 					fontSize : 16,
 					fontWeight : 'bold',
-					fontFamily : 'Helvetica Neue'//left: '10dp'
+					fontFamily : 'Helvetica Neue'
 				}
 			}
 		}, {
@@ -66,13 +66,12 @@ function savedwindow() {
 			},
 			events : {
 				click : upload
-			} // Binds a callback to the button's click event
+			}
 		}]
 	};
 
+	// This function is called whenever the user taps on the Upload button in the List.
 	function upload(e) {
-		//Ti.API.info('Upload clicked: ' + e.type);
-		//alert("Your report will be uploaded shortly");
 		if (test > 1) {
 			var uploaded = Titanium.UI.createAlertDialog({
 				title : 'Sending Report',
@@ -80,11 +79,9 @@ function savedwindow() {
 			});
 			uploaded.show();
 		}
-
 		test += 1;
-		var item = e.section.getItemAt(e.itemIndex);
-		//alert('Report ID clicked: ' + item.id);
 
+		var item = e.section.getItemAt(e.itemIndex);
 		var db = Ti.Database.open("mydb");
 		var data = db.execute('SELECT title, description, date, hour, minute, ampm, lat, longi, loc, pic FROM params WHERE id=?', item.id);
 		if (data.isValidRow()) {
@@ -103,6 +100,7 @@ function savedwindow() {
 		db.close();
 
 		var fpic = Ti.Filesystem.getFile(j);
+		// Gets the picture from the Database to upload.
 		var photo = fpic.read();
 
 		rclient = Titanium.Network.createHTTPClient();
@@ -110,10 +108,10 @@ function savedwindow() {
 		rclient.setRequestHeader("Connection", "close");
 
 		rclient.onload = function() {
+			// When the report finishes uploading, we delete that report from the database and throw a little thank you message.
 			var db = Ti.Database.open("mydb");
 			db.execute('DELETE FROM params WHERE id=?', item.id);
 			listreports();
-			//alert("responseText: " + this.responseText);
 			response = JSON.parse(this.responseText);
 			row = db.execute('SELECT count FROM counter');
 			var currcount = row.fieldByName("count");
@@ -121,23 +119,14 @@ function savedwindow() {
 			db.execute('UPDATE counter SET count=?', currcount);
 			row.close();
 			db.close();
-			if (test2 > 1) {
-			var done = Titanium.UI.createAlertDialog({
-				title : 'Great',
-				message : 'We have recieved your report, thank you'
-			});
-			done.show();
-			}
-			test2 += 1;
 		};
 
 		rclient.onsendstream = function(e) {
-			//alert("Uploading. Check progress");
-			//Ti.API.info('PROGRESS: ' + e.progress);
+			// We can track the progress here. But as we've used a ListView, we don't have to.
 		};
 
 		rclient.onerror = function(e) {
-			alert('Failed to Upload');
+			// Incase some error occurs, process it here but we aren't because the report would be saved in the database again.
 		};
 
 		var params = {
@@ -157,30 +146,26 @@ function savedwindow() {
 		};
 
 		rclient.send(params);
-
 	};
 
+	// Here we create a cool looking ListView from the template that we have previously defined.
 	var lview = Ti.UI.createListView({
 		separatorColor : '#092436',
 		separatorStyle : Titanium.UI.iPhone.ListViewSeparatorStyle.SINGLE_LINE,
 		templates : {
 			'myTemplate' : myTemplate
-		}, // Mapping myTemplate object to the 'myTemplate' style name
-		defaultItemTemplate : 'myTemplate', // Making it default list template for all rows/dataitems
+		},
+		defaultItemTemplate : 'myTemplate',
 		backgroundColor : '#FFFFFF',
 		top : '1%',
-		//   headerTitle: "Reports to Upload",     //causes dexer fail
+
 	});
 
 	function listreports() {
 		var db = Ti.Database.open("mydb");
 		var rows = db.execute('SELECT id, title, description, date, hour, minute, ampm, lat, longi, loc, pic FROM params');
-		//var rows = db.execute('SELECT * FROM params');
-
 		data = [];
-
 		while (rows.isValidRow()) {
-			//alert(data);
 			data.push({
 				id : rows.fieldByName('id'),
 				photo : {
@@ -193,7 +178,6 @@ function savedwindow() {
 					itemId : rows.fieldByName('id'),
 					accessoryType : Ti.UI.LIST_ACCESSORY_TYPE_NONE
 				}
-
 			});
 
 			rows.next();
@@ -201,26 +185,23 @@ function savedwindow() {
 		rows.close();
 		db.close();
 
-		//after filling up data[], now displaying the list
+		// We display the ListView here when we are done populating it.
 		var section = Ti.UI.createListSection({
 			items : data
 		});
 		lview.sections = [section];
 
-		//list.setData(data);
-
 		lview.addEventListener('itemclick', function(e) {
 
 			if (e.bindId == 'button' || e.bindId == 'photo') {
 				var item = e.section.getItemAt(e.itemIndex);
-				//alert('Report ID clicked: ' + item.id);
 			}
 		});
 		swindow.add(lview);
 	}
 
+	// This label is used to display the title of the report in the section of the list.
 	function genericLabel() {
-
 		var glabel = Titanium.UI.createLabel({
 			text : 'N',
 			font : {

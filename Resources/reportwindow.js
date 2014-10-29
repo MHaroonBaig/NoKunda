@@ -207,7 +207,7 @@ function reportwindow() {
 				// Holds the path where the Captured Image is being stored.
 				theimg = f.nativePath;
 
-				Ti.API.info('PICsize: ' + img.height + " x " + img.width);
+				//Ti.API.info('PICsize: ' + img.height + " x " + img.width);
 
 				// This view holds the Captured Image and a Retake button.
 				topview = genericview();
@@ -368,8 +368,8 @@ function reportwindow() {
 				submitbtn.backgroundColor = "#4C93C3";
 				submitbtn.borderColor = "#2D5875";
 				submitbtn.borderWidth = 2;
-				submitbtn.top = '5%';
-				submitbtn.height = '12%';
+				submitbtn.top = '10%';
+				submitbtn.height = '14%';
 				submitbtn.left = '32%';
 
 				submitbtn.addEventListener('click', function(e) {
