@@ -18,7 +18,17 @@ function savedwindow() {
 		barColor : '#2079b4',
 
 	});
+
 	swindow.addEventListener('focus', listreports);
+
+	var bgImage = Ti.UI.createImageView({
+		height : '100%',
+		width : '100%',
+		top : 0,
+		left : 0,
+		image : 'back2.png'
+	});
+	swindow.add(bgImage);
 
 	// This is a template from which our ListView would be created.
 	var myTemplate = {
@@ -161,8 +171,9 @@ function savedwindow() {
 			'myTemplate' : myTemplate
 		},
 		defaultItemTemplate : 'myTemplate',
-		backgroundColor : '#FFFFFF',
+		//backgroundColor : '#FFFFFF',
 		top : '1%',
+		backgroundColor:'transparent',
 
 	});
 
@@ -181,7 +192,8 @@ function savedwindow() {
 				},
 				properties : {
 					itemId : rows.fieldByName('id'),
-					accessoryType : Ti.UI.LIST_ACCESSORY_TYPE_NONE
+					accessoryType : Ti.UI.LIST_ACCESSORY_TYPE_NONE, 
+					backgroundColor:'transparent',
 				}
 			});
 
