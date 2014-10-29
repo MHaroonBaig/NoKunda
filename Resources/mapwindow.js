@@ -66,7 +66,7 @@ function mapwindow() {
 					annotationss.push(annon);
 				}
 
-				Ti.API.info("PUSHED Reports: " + annotationss);
+				//Ti.API.info("PUSHED Reports: " + annotationss);
 
 				mapview.annotations = annotationss;
 				self.add(mapview);

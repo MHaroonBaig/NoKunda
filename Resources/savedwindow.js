@@ -1,4 +1,7 @@
 function savedwindow() {
+
+	var test = 1;
+	var test2 = 1;
 	var swindow = Ti.UI.createWindow({
 		title : 'Saved Reports',
 		titleAttributes : {
@@ -52,10 +55,10 @@ function savedwindow() {
 				height : '34dp',
 				right : '6dp',
 				font : {
-				fontSize : 11,
-				fontWeight : 'bold',
-				fontFamily : 'STHeitiSC-Medium'
-			},
+					fontSize : 11,
+					fontWeight : 'bold',
+					fontFamily : 'STHeitiSC-Medium'
+				},
 				title : 'Upload',
 				backgroundColor : '#3498db',
 				borderRadius : 4,
@@ -69,7 +72,16 @@ function savedwindow() {
 
 	function upload(e) {
 		//Ti.API.info('Upload clicked: ' + e.type);
-		alert("Your report will be uploaded shortly");
+		//alert("Your report will be uploaded shortly");
+		if (test > 1) {
+			var uploaded = Titanium.UI.createAlertDialog({
+				title : 'Sending Report',
+				message : 'Your report would be received shortly'
+			});
+			uploaded.show();
+		}
+
+		test += 1;
 		var item = e.section.getItemAt(e.itemIndex);
 		//alert('Report ID clicked: ' + item.id);
 
@@ -109,7 +121,14 @@ function savedwindow() {
 			db.execute('UPDATE counter SET count=?', currcount);
 			row.close();
 			db.close();
-			alert("Your report has been successfully uploaded.");
+			if (test2 > 1) {
+			var done = Titanium.UI.createAlertDialog({
+				title : 'Great',
+				message : 'We have recieved your report, thank you'
+			});
+			done.show();
+			}
+			test2 += 1;
 		};
 
 		rclient.onsendstream = function(e) {

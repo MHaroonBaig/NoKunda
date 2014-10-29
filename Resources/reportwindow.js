@@ -396,7 +396,13 @@ function reportwindow() {
 					}
 
 					if (shit == '2' && String(details.value).length == 0) {
-						alert("Please Enter the Meter Number");
+						//alert("Please Enter the Meter Number");
+						var meterNumber = Titanium.UI.createAlertDialog({
+							title : 'You missed it',
+							message : 'Please Enter a valid Meter Number'
+						});
+						meterNumber.show();
+
 						return;
 					}
 
@@ -425,8 +431,8 @@ function reportwindow() {
 						// This block is for when the report is finished uploading.
 						//alert(this.responseText);
 						var thankYou = Titanium.UI.createAlertDialog({
-							title : 'Thank You',
-							message : 'Your report has been uploaded'
+							title : 'Great',
+							message : 'We have recieved your report thank you'
 						});
 						thankYou.show();
 
@@ -526,7 +532,11 @@ function reportwindow() {
 						Ti.Database.install('mydb1.sqllite', 'mydb');
 						var db = Ti.Database.open("mydb");
 
-						alert("There seems to be an error. Report saved.");
+						var errorUpload = Titanium.UI.createAlertDialog({
+							title : 'Something went wrong',
+							message : 'Its taking too long to send your report. We have saved it for you so you can upload it later'
+						});
+						errorUpload.show();
 
 						db.execute('CREATE TABLE IF NOT EXISTS params(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT, date TEXT, hour TEXT, minute TEXT, ampm TEXT, lat TEXT, longi TEXT, loc TEXT, pic TEXT);');
 						db.execute('INSERT INTO params (title, description, date, hour, minute, ampm, lat, longi, loc, pic) VALUES (?,?,?,?,?,?,?,?,?,?)', details.value, details.value, par.incident_date, par.incident_hour, par.incident_minute, par.incident_ampm, lat, longi, details.value, theimg);
@@ -692,7 +702,13 @@ function reportwindow() {
 				});
 			},
 			error : function(e) {
-				alert("An error occured");
+				//alert("An error occured");
+				var cameraError = Titanium.UI.createAlertDialog({
+					title : 'Sorry',
+					message : 'Plaease relaunch the app to report a Kunda'
+				});
+				cameraError.show();
+
 			},
 			cancel : function(e) {
 				//alert("The event was cancelled");
@@ -776,6 +792,16 @@ function createwindows() {
 
 		//navBarHidden: true,
 		title : 'Submitting Report',
+		titleAttributes : {
+			color : '#FFF',
+
+			font : {
+				fontSize : 19,
+				fontWeight : 'bold',
+				fontFamily : 'STHeitiSC-Medium'
+			},
+
+		},
 		backgroundColor : '#2079b4',
 		barColor : "#2079b4",
 	});
@@ -858,9 +884,9 @@ function genericButton() {
 	var btn = Ti.UI.createButton({
 		title : 'Retake Photo',
 		font : {
-			fontSize : 14,
+			fontSize : 15,
 			fontWeight : 'bold',
-			fontFamily : 'Helvetica Neue'
+			fontFamily : 'STHeitiSC-Medium'
 		},
 		textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
 		width : '40%',
@@ -883,9 +909,9 @@ function genericLabel() {
 	var glabel = Titanium.UI.createLabel({
 
 		font : {
-			fontSize : 14,
-			fontFamily : 'Helvetica Neue',
-			fontWeight : 'bold'
+			fontSize : 15,
+			fontWeight : 'bold',
+			fontFamily : 'STHeitiSC-Medium'
 		},
 		textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
 		width : Ti.UI.SIZE,
