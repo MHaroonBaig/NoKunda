@@ -4,8 +4,6 @@ function tabs() {
 
 	var tabs = Ti.UI.createTabGroup();
 	tabs.navBarHidden = true;
-	//This also hides the tab ICONS!! & hiding isn't required on iOS
-	//tabs.tabBarHidden = true  //hides tabs
 
 	var winreport = require('reportwindow')();
 	var winsavedreports = require('savedwindow')();
@@ -30,17 +28,16 @@ function tabs() {
 	tabs.addTab(tabreport);
 	tabs.addTab(tabsavedreports);
 	tabs.addTab(tabmap);
+	
 	overrideTabs(tabs, // The tab group
 	{
+		// View parameters for the background
 		backgroundColor : '#092436',
 		borderColor : "#092436",
 		borderWidth:1,
-		
-		
-	}, // View parameters for the background
+	}, 
 	{
-		
-		
+		// View parameters for selected tabs
 		backgroundColor : '#2079B4',
 		color : '#FFF',
 		style : 0,
@@ -51,15 +48,10 @@ function tabs() {
 			fontFamily : 'STHeitiSC-Medium'
 		},
 		borderWidth:2,
-	//borderRadius:15,
-	//opacity:0.5,
-	
-	
-	
-	}, // View parameters for selected tabs
+	}, 
 	
 	{
-		//backgroundColor : '#2079B4',
+		// View parameters for deselected tabs
 		backgroundColor : '#3498db',
 		color : '#f7f7f7',
 		style : 0,
@@ -69,8 +61,8 @@ function tabs() {
 			fontFamily : 'STHeitiSC-Light'
 		},
 		opacity:0.9,
-	} // View parameters for deselected tabs
-	);
+	});
+	
 	tabs.open({
 		transition : Titanium.UI.iPhone.AnimationStyle.CURL_UP
 	});
