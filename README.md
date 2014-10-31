@@ -1,6 +1,6 @@
-# [NoKunda] (www.nokunda.com), *Combating Power Theft*
----
+# [NoKunda] (www.nokunda.com) 
 
+*Combating Power Theft* <br>
 NoKunda Mobile app is designed to Report Electricity theft happening in **Pakistan**. The Scope and relevance of Nokunda is tremendous in our Country considering the prevalent Energy crises and Lack of Infrastructure/Resources to resolve power losses or mitigate them.  Nokunda invests in the power of people, to report widespread Electricity theft and bringing perpetrators to justice.  We want to report Electricity theft and resolve the Losses incurred by using *Crowdsourcing*, i-e Putting People in charge.
 
 Nokunda has a Publically accessible & dynamically updating **Heat** map of Electricity theft reports consolidating from all over Pakistan. Anyone anywhere can report a Kunda Using the Smart Phone application, and that Report will be displayed on a Publically accessible website with precise Geo-location Data and High Resolution image. We have structured the process of reporting in a way that is Anonymous so that people are motivated to report electricity theft without any fear. 
