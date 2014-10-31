@@ -15,7 +15,7 @@ Electricity theft is a massive problem plaguing our grid infrastructure and Elec
  ---
  * Appcelerator's [Titanium] (http://www.appcelerator.com)
  * [Ushahidi Platform] (http://www.ushahidi.com/product/ushahidi/)
- * 
+ 
  
 ###Potential
 ---
