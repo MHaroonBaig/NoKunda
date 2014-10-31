@@ -173,7 +173,7 @@ function savedwindow() {
 		defaultItemTemplate : 'myTemplate',
 		//backgroundColor : '#FFFFFF',
 		top : '1%',
-		backgroundColor:'transparent',
+		backgroundColor : 'transparent',
 
 	});
 
@@ -192,8 +192,8 @@ function savedwindow() {
 				},
 				properties : {
 					itemId : rows.fieldByName('id'),
-					accessoryType : Ti.UI.LIST_ACCESSORY_TYPE_NONE, 
-					backgroundColor:'transparent',
+					accessoryType : Ti.UI.LIST_ACCESSORY_TYPE_NONE,
+					backgroundColor : 'transparent',
 				}
 			});
 

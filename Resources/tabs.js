@@ -5,10 +5,12 @@ function tabs() {
 	var tabs = Ti.UI.createTabGroup();
 	tabs.navBarHidden = true;
 
+	// These are all the windows that each tab is going to open.
 	var winreport = require('reportwindow')();
 	var winsavedreports = require('savedwindow')();
 	var winmap = require('mapwindow')();
 
+	// For the time-being, we're neglecting the icons and creating a unified experience across the whole app.
 	var tabreport = Ti.UI.createTab({
 		title : 'Report',
 		//icon : 'KS_nav_ui.png',
@@ -28,16 +30,19 @@ function tabs() {
 	tabs.addTab(tabreport);
 	tabs.addTab(tabsavedreports);
 	tabs.addTab(tabmap);
-	
-	overrideTabs(tabs, // The tab group
+
+	/* This method will override the tabs, add some background color and font etc while
+	 handling different states, selected and deselected. This method can only be called once
+	 we are done adding all the tabs to the view.
+	 */
+	overrideTabs(tabs, // The tab group.
 	{
-		// View parameters for the background
+		// View parameters for the background.
 		backgroundColor : '#092436',
 		borderColor : "#092436",
-		borderWidth:1,
-	}, 
-	{
-		// View parameters for selected tabs
+		borderWidth : 1,
+	}, {
+		// View parameters for selected tabs.
 		backgroundColor : '#2079B4',
 		color : '#FFF',
 		style : 0,
@@ -47,11 +52,9 @@ function tabs() {
 			fontWeight : 'bold',
 			fontFamily : 'STHeitiSC-Medium'
 		},
-		borderWidth:2,
-	}, 
-	
-	{
-		// View parameters for deselected tabs
+		borderWidth : 2,
+	}, {
+		// View parameters for deselected tabs.
 		backgroundColor : '#3498db',
 		color : '#f7f7f7',
 		style : 0,
@@ -60,9 +63,9 @@ function tabs() {
 			fontWeight : 'bold',
 			fontFamily : 'STHeitiSC-Light'
 		},
-		opacity:0.9,
+		opacity : 0.9, // For adding a little blur when it;s not selected.
 	});
-	
+
 	tabs.open({
 		transition : Titanium.UI.iPhone.AnimationStyle.CURL_UP
 	});
