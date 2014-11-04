@@ -1,6 +1,6 @@
 # [NoKunda] (www.nokunda.com)
 <img src="/Resources/Default-Portrait.png" alt="NoKunda Logo" height="550" width="350">
-<img src="https://photos-6.dropbox.com/t/1/AACCqhSdwTJIJNUTnSGPaXoyybxUs2dgRjLyhw_yogquVw/12/274112588/png/1024x768/3/1414760400/0/2/iOS%20Simulator%20Screen%20Shot%2031-Oct-2014%203.33.04%20PM.png/kpHV42KOu2vIpqnXRJnWYYxPDQLDC3aysm1FE22EfvA" alt="NoKunda Logo" height="550" width="350">
+
 
 
 *Combating Power Theft* <br>
