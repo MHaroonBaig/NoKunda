@@ -6,8 +6,8 @@ Nokunda has a Publically accessible & dynamically updating **Heat** map of Elect
 
 ###Screen Shots
 ---
-<img src="/ScreenShots/mainScreen.jpg" alt="Main Screen"> <img src="/ScreenShots/reportScreen.jpg" alt="Report Screen"> <img src="/ScreenShots/mapScreen.jpg" alt="Map Screen" width = "271" height = "500">
-<img src="/ScreenShots/tweetScreen.jpg" alt="Tweet Screen">  <img src="/ScreenShots/tutorialScreen.jpg" alt="Tutorial Screen">
+<img src="/ScreenShots/launchScreen.jpg" alt="Launch Screen"> <img src="/ScreenShots/tutorialScreen.jpg" alt="Tutorial Screen"> <img src="/ScreenShots/mainScreen.jpg" alt="Main Screen" width = "271" height = "500">
+<img src="/ScreenShots/reportScreen.jpg" alt="Report Screen"> <img src="/ScreenShots/mapScreen.jpg" alt="Map Screen"> <img src="/ScreenShots/tweetScreen.jpg" alt="Tweet Screen" width = "271" height = "500">
 
 
 ###Problem Solving Approach
