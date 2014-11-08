@@ -26,7 +26,7 @@ Electricity theft is a massive problem plaguing our grid infrastructure and Elec
 ---
 With Nokunda we want to solve the energy crises in Pakistan. With Crowdsourcing we want to set a trend where everyone who uses electricity should consider it his duty to report and resolve the issue of theft present in our system. Moreover we have gamified the experience of Reporting via social sharing where anyone reporting a Kunda will share it with his friends that he is a responsible citizen and he just uploaded a kunda Report. This gamification process will motivate his friends to do the same, we want to make it a social movement where anyone having a smartphone should Report at least one Kunda picture and nominate three friends to do the same. Moreover if the process of Kunda reporting is further incentivized then more and more people will be motivated to report kundas. 
 
-###License
+###License :guardsman:
 ---
 Currently, we have chosen GNU General Public License v3.0 for this app. The terms are given below. 
 
