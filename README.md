@@ -28,6 +28,8 @@ With Nokunda we want to solve the energy crises in Pakistan. With Crowdsourcing 
 
 ###License
 ---
+Currently, we have chosen GNU General Public License v3.0 for this app. The terms are given below. 
+
     NoKunda, a mobile app which is designed to Report Electricity theft happening in Pakistan.
     Copyright (C) 2015  Muhammad Haroon Baig
 
