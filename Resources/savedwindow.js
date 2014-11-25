@@ -82,7 +82,8 @@ function savedwindow() {
 
 	// This function is called whenever the user taps on the Upload button in the List.
 	function upload(e) {
-		var section = e.section;
+		try{
+			var section = e.section;
 		var itenIndex = e.itemIndex;
 
 		// if (test > 1) {
@@ -161,6 +162,11 @@ function savedwindow() {
 		};
 
 		rclient.send(params);
+		} 
+		catch (error)
+		{
+			//something here
+		}
 	};
 
 	// Here we create a cool looking ListView from the template that we have previously defined.
@@ -209,7 +215,13 @@ function savedwindow() {
 		lview.sections = [section];
 
 		lview.addEventListener('itemclick', function(e) {
+		try{
 			upload(e);
+		}
+		catch (error)
+		{
+			//something here
+		}
 		});
 		swindow.add(lview);
 	}
